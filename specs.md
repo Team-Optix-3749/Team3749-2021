@@ -49,6 +49,23 @@
 - ShootMax
 - ShooterAntiJam
 
+# Elevator
+### Programmers: [REDACTED]
+### Methods
+- elevatorUp
+  - Take input percent power
+- elevatorDown
+  - Take input percent power
+- elevatorTop
+  - Use encoder to go to top
+- elevatorBottom
+  - Use encoder to go to bottom
+### Commands
+- ElevatorUp
+- ElevatorDown
+- ElevatorTop
+- ElevatorBottom
+
 ## Intake
 ### Programmers: [REDACTED]
 ### Methods
