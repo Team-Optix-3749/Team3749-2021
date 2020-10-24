@@ -32,3 +32,19 @@
 - TankDrive
 - CurvatureDrive
 - DriveStraight
+
+## Shooter
+### Programmers: [REDACTED]
+### Methods
+- set
+  - Set velocity of shooter motor (use built-in NEO encoders)
+- stop
+  - Set motor to 0
+- sendToOrbit
+  - Send 12 volts to the motor
+- antiJam
+  - Make motor go forward and back to unjam power cells
+### Commands
+- Shoot
+- ShootMax
+- ShooterAntiJam
