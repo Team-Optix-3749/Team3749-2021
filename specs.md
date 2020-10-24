@@ -48,3 +48,17 @@
 - Shoot
 - ShootMax
 - ShooterAntiJam
+
+## Intake
+### Programmers: [REDACTED]
+### Methods
+- up
+  - Intake up
+- down
+  - Intake down
+- antiJam
+  - Make motors go forward and back to unjam power cells
+### Commands
+- IntakeUp
+- IntakeDown
+- IntakeAntiJam
