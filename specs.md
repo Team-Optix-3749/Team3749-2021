@@ -1,14 +1,20 @@
 # Privi Specifications
+
 > Hardware and software specifications for Privi
 
 ## Drivetrain
+
 ### Programmers: [REDACTED]
+
 ### Setup
+
 - Motors: Four CIM Motors
 - Motor Controllers: Two TalonSRX (front), Two VictorSPX (back)
 - Encoder: CIM Encoder CIMcoder
 - Other Sensors: Kaui Labs AHRS navX-MXP Gyro
+
 ### Methods
+
 - arcadeDrive
   - Arcade drive using differential drive
 - tankDrive
@@ -27,15 +33,20 @@
   - Set right side motors to percent power
 - stopMotors
   - Set all motors to 0
+
 ### Commands
+
 - ArcadeDrive
 - TankDrive
 - CurvatureDrive
 - DriveStraight
 
 ## Shooter
+
 ### Programmers: [REDACTED]
+
 ### Methods
+
 - set
   - Set velocity of shooter motor (use built-in NEO encoders)
 - stop
@@ -44,14 +55,19 @@
   - Send 12 volts to the motor
 - antiJam
   - Make motor go forward and back to unjam power cells
+
 ### Commands
+
 - Shoot
 - ShootMax
 - ShooterAntiJam
 
 # Elevator
+
 ### Programmers: [REDACTED]
+
 ### Methods
+
 - elevatorUp
   - Take input percent power
 - elevatorDown
@@ -60,22 +76,29 @@
   - Use encoder to go to top
 - elevatorBottom
   - Use encoder to go to bottom
+
 ### Commands
+
 - ElevatorUp
 - ElevatorDown
 - ElevatorTop
 - ElevatorBottom
 
 ## Intake
+
 ### Programmers: [REDACTED]
+
 ### Methods
+
 - up
   - Intake up
 - down
   - Intake down
 - antiJam
   - Make motors go forward and back to unjam power cells
+
 ### Commands
+
 - IntakeUp
 - IntakeDown
 - IntakeAntiJam
