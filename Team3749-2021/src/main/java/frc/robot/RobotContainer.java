@@ -28,4 +28,8 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     return m_autoCommand;
   }
+
+  public Elevator getElevator() {
+    return m_elevator;
+  }
 }
