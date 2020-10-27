@@ -1,0 +1,22 @@
+name: google
+
+on:
+  push:
+    branches: [main, ci]
+  pull_request:
+    branches: [main]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Check formatting
+        uses: axel-op/googlejavaformat-action@v3
