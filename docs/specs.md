@@ -4,7 +4,7 @@
 
 ## Drivetrain
 
-### Programmers: [REDACTED]
+### Programmers: Rebecca & Karthik & Riya
 
 ### Setup
 
@@ -43,7 +43,12 @@
 
 ## Shooter
 
-### Programmers: [REDACTED]
+### Programmers: Rohan & Aadit
+
+### Setup
+
+- Motors: One NEO motor
+- Motor Controllers: One Spark Max
 
 ### Methods
 
@@ -64,7 +69,7 @@
 
 # Elevator
 
-### Programmers: [REDACTED]
+### Programmers: Akshay & Safin
 
 ### Methods
 
@@ -86,7 +91,7 @@
 
 ## Intake
 
-### Programmers: [REDACTED]
+### Programmers: Yasaswi & Anthony
 
 ### Methods
 
