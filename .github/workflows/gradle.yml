@@ -20,7 +20,7 @@ jobs:
           java-version: 11
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ./Team-3749-2021/gradlew
+        run: chmod +x ./Team3749-2021/gradlew
 
       - name: Build with Gradle
-        run: ./Team-3749-2021/gradlew build
+        run: ./Team3749-2021/gradlew build
