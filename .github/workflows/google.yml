@@ -2,7 +2,7 @@ name: google
 
 on:
   push:
-    branches: [main]
+    branches: [main, ci]
   pull_request:
     branches: [main]
 
@@ -17,3 +17,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Check formatting
+        uses: axel-op/googlejavaformat-action@v3
