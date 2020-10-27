@@ -11,10 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
-        use: actions/setup-node@v1
+        uses: actions/setup-node@v1
 
-      - run: npm i -g prettier
-      - run: prettier --check .
+      - name: Install dependencies
+        run: npm i -g prettier
+
+      - name: Run prettier format check
+        run: prettier --check .
