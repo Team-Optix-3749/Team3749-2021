@@ -16,8 +16,5 @@ jobs:
       - name: Set up Node.js
         use: actions/setup-node@v1
 
-      - name: Install Prettier
-        run: npm i -g prettier
-
-      - name: Check formatting
-        run: prettier --check .
+      - run: npm i -g prettier
+      - run: prettier --check .
