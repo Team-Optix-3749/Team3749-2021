@@ -2,7 +2,7 @@
 > Hardware and software specifications for Privi
 
 ## Drivetrain
-### Programmers: [REDACTED]
+### Programmers: Rebecca & Karthik & Riya
 ### Setup
 - Motors: Four CIM Motors
 - Motor Controllers: Two TalonSRX (front), Two VictorSPX (back)
@@ -34,7 +34,10 @@
 - DriveStraight
 
 ## Shooter
-### Programmers: [REDACTED]
+### Programmers: Rohan & Aadit
+### Setup 
+- Motors: One NEO motor
+- Motor Controllers: One Spark Max
 ### Methods
 - set
   - Set velocity of shooter motor (use built-in NEO encoders)
@@ -50,7 +53,7 @@
 - ShooterAntiJam
 
 # Elevator
-### Programmers: [REDACTED]
+### Programmers: Akshay & Safin
 ### Methods
 - elevatorUp
   - Take input percent power
@@ -67,7 +70,7 @@
 - ElevatorBottom
 
 ## Intake
-### Programmers: [REDACTED]
+### Programmers: Yasaswi & Anthony
 ### Methods
 - up
   - Intake up
