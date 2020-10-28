@@ -32,6 +32,9 @@ public class Shooter extends SubsystemBase {
     m_encoder = m_shooterMotor.getEncoder();
     m_controller = m_shooterMotor.getPIDController();
     m_controller.setFeedbackDevice(m_encoder);
+    m_controller.setP(Constants.ShooterGains.kP);
+    m_controller.setI(Constants.ShooterGains.kI);
+    m_controller.setD(Constants.ShooterGains.kD);
     stop();
   }
 
@@ -39,8 +42,8 @@ public class Shooter extends SubsystemBase {
    * Set Position of Shooter
    */
 
-  public void set(double setpoint) {
-    m_controller.setReference(-setpoint, ControlType.kVoltage);
+  public void set(double velocity) {
+    m_controller.setReference(velocity, ControlType.kVelocity);
   }
 
   /**
@@ -64,6 +67,6 @@ public class Shooter extends SubsystemBase {
    */
 
   public void antiJam() {
-    
+
   }
 }
