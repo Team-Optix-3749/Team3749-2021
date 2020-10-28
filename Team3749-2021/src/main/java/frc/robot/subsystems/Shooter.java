@@ -11,6 +11,12 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.ControlType;
 
+/**
+ * class Shooter
+ *
+ * @author Aadit Gupta and Rohan Juneja
+ */
+
 public class Shooter extends SubsystemBase {
   
   private CANSparkMax m_shooterMotor;
