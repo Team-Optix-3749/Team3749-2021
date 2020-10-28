@@ -26,4 +26,10 @@ public final class Constants {
         public static final int controlPanel = 1;
         public static final int vision = 1;
     }
+
+    public static class ShooterGains {
+        public static final double kP = 1.0;
+        public static final double kI = 1.0;
+        public static final double kD = 1.0;
+    }
 }
