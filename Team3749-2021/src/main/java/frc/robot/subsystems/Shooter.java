@@ -44,7 +44,7 @@ public class Shooter extends SubsystemBase {
    */
 
   public void set(double velocity) {
-    m_controller.setReference(velocity, ControlType.kVelocity);
+    m_controller.setReference(-velocity, ControlType.kVelocity);
   }
 
   /**

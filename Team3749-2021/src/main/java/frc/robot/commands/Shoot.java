@@ -1,5 +1,7 @@
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
@@ -8,17 +10,17 @@ import frc.robot.subsystems.*;
  */
 public class Shoot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Shooter m_subsystem;
+  private final Shooter m_shooter;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new Shoot Command.
    *
-   * @param subsystem The subsystem used by this command.
+   * @param subsystem The Shooter used by this command
+   * @param controller_input A double supplier providing the encoder input
    */
-  public Shoot(Shooter subsystem) {
-    m_subsystem = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+  public Shoot(Shooter shooter, DoubleSupplier controller_input) {
+    m_shooter = shooter;
+    addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.
