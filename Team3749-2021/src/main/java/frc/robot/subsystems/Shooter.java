@@ -23,6 +23,9 @@ public class Shooter extends SubsystemBase {
   private CANEncoder m_encoder;
   private CANPIDController m_controller;
 
+  /**
+   * Constructor
+   */
   public Shooter() {
     m_shooterMotor = new CANSparkMax(Constants.CAN.shooter_motor, MotorType.kBrushless);
     m_shooterMotor.setIdleMode(IdleMode.kCoast);
@@ -34,7 +37,6 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Set Position of Shooter
-   *
    */
 
   public void set(double setpoint) {
@@ -43,7 +45,6 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Stop Shooter
-   *
    */
 
   public void stop() {
@@ -52,7 +53,6 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Send Powercells to Orbit
-   *
    */
 
   public void sendToOrbit() {
@@ -61,9 +61,9 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Un-Jam Powercells
-   * 
    */
 
   public void antiJam() {
+    
   }
 }
