@@ -40,6 +40,7 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Set Position of Shooter
+   * @param velocity The desired velocity of the shooter
    */
 
   public void set(double velocity) {
