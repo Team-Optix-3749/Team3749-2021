@@ -16,7 +16,9 @@ public final class Constants {
 
     }
 
-    public static class Sys {
+    // Whether a subsystem is installed and in use
+    // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
+    public static class Safety {
         static int drive = 1;
         static int shooter = 1;
         static int intake = 1;
