@@ -6,7 +6,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
 /**
- * An example command that uses an example subsystem.
+ * Command that Shoots at velocity provided by double supplier
+ * @author Rohan Juneja
+ * @author Aadit Gupta
  */
 public class Shoot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
@@ -39,6 +41,7 @@ public class Shoot extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_shooter.stop();
   }
 
   // Returns true when the command should end.
