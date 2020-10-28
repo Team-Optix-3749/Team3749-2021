@@ -1,7 +1,5 @@
 package frc.robot;
 
-import java.util.HashMap;
-
 public final class Constants {
     public static class CAN {
         public static int drive_lf = 11;
