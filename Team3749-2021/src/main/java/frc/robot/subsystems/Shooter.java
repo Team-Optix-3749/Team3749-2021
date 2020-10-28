@@ -12,13 +12,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.ControlType;
 
 /**
- * class Shooter
+ * Shooter Subsystem
  *
- * @author Aadit Gupta and Rohan Juneja
+ * @author Aadit Gupta
+ * @author Rohan Juneja
  */
 
 public class Shooter extends SubsystemBase {
-  
   private CANSparkMax m_shooterMotor;
   private CANEncoder m_encoder;
   private CANPIDController m_controller;
@@ -32,19 +32,38 @@ public class Shooter extends SubsystemBase {
     stop();
   }
 
+  /**
+   * Set Position of Shooter
+   *
+   */
+
   public void set(double setpoint) {
     m_controller.setReference(-setpoint, ControlType.kVoltage);
   }
+
+  /**
+   * Stop Shooter
+   *
+   */
 
   public void stop() {
     m_controller.setReference(0, ControlType.kDutyCycle);
   }
 
+  /**
+   * Send Powercells to Orbit
+   *
+   */
+
   public void sendToOrbit() {
 
   }
 
+  /**
+   * Un-Jam Powercells
+   * 
+   */
+
   public void antiJam() {
-    
   }
 }
