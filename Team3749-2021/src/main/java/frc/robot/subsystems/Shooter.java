@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Robot;
+
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
@@ -10,24 +12,26 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.ControlType;
 
 public class Shooter extends SubsystemBase {
-  /**
-   * Creates a new ExampleSubsystem.
-   */
+  
+  private CANSparkMax m_shooterMotor;
+  private CANEncoder m_encoder;
+  private CANPIDController m_controller;
+
   public Shooter() {
-
+    m_shooterMotor = new CANSparkMax(Robot.getConstants().getCAN("shooter_motor"), MotorType.kBrushless);
+    m_shooterMotor.setIdleMode(IdleMode.kCoast);
+    m_encoder = m_shooterMotor.getEncoder();
+    m_controller = m_shooterMotor.getPIDController();
+    m_controller.setFeedbackDevice(m_encoder);
+    stop();
   }
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
-
-  public void set() {
-
+  public void set(double setpoint) {
+    m_controller.setReference(-setpoint, ControlType.kVoltage);
   }
 
   public void stop() {
-
+    m_controller.setReference(0, ControlType.kDutyCycle);
   }
 
   public void sendToOrbit() {
