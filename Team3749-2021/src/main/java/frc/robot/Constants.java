@@ -13,7 +13,6 @@ public final class Constants {
         public static int intake_motor_b = 22;
         public static int elevator_motor = 24;
         public static int control_panel_motor = 15;
-
     }
 
     // Whether a subsystem is installed and in use
