@@ -11,15 +11,17 @@ import frc.robot.subsystems.*;
 public class Shoot extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Shooter m_shooter;
+  private final DoubleSupplier m_controllerInput;
 
   /**
    * Creates a new Shoot Command.
    *
    * @param subsystem The Shooter used by this command
-   * @param controller_input A double supplier providing the encoder input
+   * @param controllerInput A double supplier providing the encoder input ( Should be 0-1, will be scaled to 0-5500 RPM )
    */
-  public Shoot(Shooter shooter, DoubleSupplier controller_input) {
+  public Shoot(Shooter shooter, DoubleSupplier controllerInput) {
     m_shooter = shooter;
+    m_controllerInput = controllerInput;
     addRequirements(shooter);
   }
 
@@ -31,6 +33,7 @@ public class Shoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    m_shooter.set(m_controllerInput.getAsDouble() * 5500);
   }
 
   // Called once the command ends or is interrupted.
