@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
+import frc.robot.Constants;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
@@ -18,7 +18,7 @@ public class Shooter extends SubsystemBase {
   private CANPIDController m_controller;
 
   public Shooter() {
-    m_shooterMotor = new CANSparkMax(Robot.getConstants().getCAN("shooter_motor"), MotorType.kBrushless);
+    m_shooterMotor = new CANSparkMax(Constants.CAN.shooter_motor, MotorType.kBrushless);
     m_shooterMotor.setIdleMode(IdleMode.kCoast);
     m_encoder = m_shooterMotor.getEncoder();
     m_controller = m_shooterMotor.getPIDController();
