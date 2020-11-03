@@ -1,7 +1,5 @@
 # ✔️ TODO
-> Cross of things that are completed, but don't remove them so we can have the satisfaction of seeing a bunch of completed tasks
-
-> For more information check [specs](https://github.com/Team-Optix-3749/Team3749-2021/blob/main/docs/specs.md)
+> Cross of things that are completed, but don't remove them so we can have the satisfaction of seeing a bunch of completed tasks. For more information check [specs](https://github.com/Team-Optix-3749/Team3749-2021/blob/main/docs/specs.md)
 
 ## Drivetrain
 ### Setup
