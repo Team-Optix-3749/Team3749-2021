@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
+import frc.robot.Constants;
 
 /**
  * Command that Shoots at velocity provided by double supplier
@@ -35,7 +36,7 @@ public class Shoot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooter.set(m_controllerInput.getAsDouble() * 5500);
+    m_shooter.set(m_controllerInput.getAsDouble() * Constants.Shooter.maxRPM);
   }
 
   // Called once the command ends or is interrupted.

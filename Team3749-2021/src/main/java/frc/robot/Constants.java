@@ -25,9 +25,11 @@ public final class Constants {
         public static final int vision = 1;
     }
 
-    public static class ShooterGains {
+    public static class Shooter {
         public static final double kP = 1.0;
         public static final double kI = 1.0;
         public static final double kD = 1.0;
+        public static final int maxRPM = 5500;
+        public static final int maxVoltage = 12;
     }
 }

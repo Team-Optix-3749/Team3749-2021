@@ -32,9 +32,9 @@ public class Shooter extends SubsystemBase {
     m_encoder = m_shooterMotor.getEncoder();
     m_controller = m_shooterMotor.getPIDController();
     m_controller.setFeedbackDevice(m_encoder);
-    m_controller.setP(Constants.ShooterGains.kP);
-    m_controller.setI(Constants.ShooterGains.kI);
-    m_controller.setD(Constants.ShooterGains.kD);
+    m_controller.setP(Constants.Shooter.kP);
+    m_controller.setI(Constants.Shooter.kI);
+    m_controller.setD(Constants.Shooter.kD);
     stop();
   }
 
