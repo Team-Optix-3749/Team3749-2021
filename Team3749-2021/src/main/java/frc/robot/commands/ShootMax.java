@@ -13,7 +13,7 @@ public class ShootMax extends CommandBase {
   /**
    * Creates a new ExampleCommand.
    *
-   * @param subsystem The subsystem used by this command.
+   * @param Shooter The subsystem used by this command.
    */
   public ShootMax(Shooter subsystem) {
     m_shooter = subsystem;
