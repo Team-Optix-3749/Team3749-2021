@@ -60,7 +60,7 @@ public class Shooter extends SubsystemBase {
    */
 
   public void sendToOrbit() {
-
+    m_controller.setReference(Constants.Shooter.maxVoltage, ControlType.kVoltage);
   }
 
   /**
