@@ -4,21 +4,21 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
 /**
- * An example command that uses an example subsystem.
+ * The Shooter Subsystem used by the command
  */
 public class ShooterAntiJam extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Shooter m_subsystem;
+  private final Shooter m_shooter;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new Command.
    *
-   * @param subsystem The subsystem used by this command.
+   * @param Shooter The subsystem used by this command.
    */
-  public ShooterAntiJam(Shooter subsystem) {
-    m_subsystem = subsystem;
+  public ShooterAntiJam(Shooter shooter) {
+    m_shooter = shooter;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.

@@ -8,7 +8,7 @@ import frc.robot.subsystems.Shooter;
  */
 public class ShootMax extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Shooter m_subsystem;
+  private final Shooter m_shooter;
 
   /**
    * Creates a new ExampleCommand.
