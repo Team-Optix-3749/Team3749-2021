@@ -14,12 +14,12 @@ public class Elevator extends SubsystemBase {
 
   }
 
-  public void startMotor() {
+  public void upElevator() {
     m_elevator.set(ControlMode.PercentOutput, 1);
   }
 
-  public void stopMotor() {
-    m_elevator.set(ControlMode.PercentOutput, 0);
+  public void downElevator() {
+    m_elevator.set(ControlMode.PercentOutput, -1);
   }
 
   @Override
