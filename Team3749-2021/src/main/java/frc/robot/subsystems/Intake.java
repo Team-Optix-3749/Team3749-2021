@@ -15,13 +15,13 @@ public class Intake extends SubsystemBase {
     }
 
     public void inward(){
-      l_intake.set(ControlMode.PercentOutput, 0.1);
-      r_intake.set(ControlMode.PercentOutput, -0.1);
+      l_intake.set(ControlMode.PercentOutput, 1);
+      r_intake.set(ControlMode.PercentOutput, -1);
     }
 
     public void outward(){
-      l_intake.set(ControlMode.PercentOutput, -0.1);
-      r_intake.set(ControlMode.PercentOutput, 0.1);
+      l_intake.set(ControlMode.PercentOutput, -1);
+      r_intake.set(ControlMode.PercentOutput, 1);
     }
 
     public void antiJam(){
