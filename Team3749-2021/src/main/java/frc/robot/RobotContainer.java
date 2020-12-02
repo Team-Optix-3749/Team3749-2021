@@ -30,10 +30,15 @@ public class RobotContainer {
         .whenPressed(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true)
         .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
-    // elevator controller bindings
+    // elevator up controller bindings
     new JoystickButton(m_xboxController, Button.kY.value)
         .whenPressed(new ElevatorUp(m_elevator), true)
-        .whenReleased(new ElevatorUp(m_elevator), true);
+        .whenReleased(new ElevatorStop(m_elevator), true);
+
+    // elevator down controller bindings
+    new JoystickButton(m_xboxController, Button.kA.value)
+        .whenPressed(new ElevatorDown(m_elevator), true)
+        .whenReleased(new ElevatorStop(m_elevator), true);
   }
 
   /**
