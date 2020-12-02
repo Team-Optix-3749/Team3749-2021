@@ -26,7 +26,7 @@ public class ElevatorStop extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      m_elevator.stopElevator();
+    m_elevator.stopElevator();
   }
 
   // Called once the command ends or is interrupted.
