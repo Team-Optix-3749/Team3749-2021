@@ -71,6 +71,13 @@
 
 ### Programmers: Akshay & Safin
 
+### Setup
+
+- Motors: One CIM Motor
+- Motor Controllers: One TalonSRX
+- Encoders: CIM Encoder CIMcoder
+
+
 ### Methods
 
 - elevatorUp
@@ -92,6 +99,10 @@
 ## Intake
 
 ### Programmers: Yasaswi & Anthony
+
+### Setup
+- Two 775 Redline Motors
+- Motor Controllers: Two VictorSPX
 
 ### Methods
 
