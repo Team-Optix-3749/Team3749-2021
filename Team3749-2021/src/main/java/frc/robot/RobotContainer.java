@@ -25,7 +25,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // shooter controller bindings
-    new JoystickButton(m_xboxController, Axis.kLeftTrigger.value)
+    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
         .whenPressed(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true)
         .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
