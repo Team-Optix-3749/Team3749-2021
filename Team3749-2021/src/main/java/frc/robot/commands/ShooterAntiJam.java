@@ -7,7 +7,7 @@ import frc.robot.subsystems.*;
  * The Shooter Subsystem used by the command
  */
 public class ShooterAntiJam extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Shooter m_shooter;
 
   /**
