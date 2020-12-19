@@ -7,7 +7,7 @@ import frc.robot.subsystems.Shooter;
  * An example command that uses an example subsystem.
  */
 public class ShootMax extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Shooter m_shooter;
 
   /**

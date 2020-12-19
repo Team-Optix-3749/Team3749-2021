@@ -5,7 +5,7 @@ import frc.robot.subsystems.Intake;
 
 /** An example command that uses an example subsystem. */
 public class IntakeStop extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake m_intake;
 
   /**
@@ -21,7 +21,8 @@ public class IntakeStop extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
