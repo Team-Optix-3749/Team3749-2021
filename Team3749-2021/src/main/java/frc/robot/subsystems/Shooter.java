@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -39,7 +40,6 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Set Position of Shooter
-   * 
    * @param velocity The desired velocity of the shooter
    */
 

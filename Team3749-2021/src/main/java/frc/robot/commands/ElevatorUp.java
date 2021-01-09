@@ -5,7 +5,7 @@ import frc.robot.subsystems.Elevator;
 
 /** An example command that uses an example subsystem. */
 public class ElevatorUp extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Elevator m_elevator;
 
   /**
@@ -21,8 +21,7 @@ public class ElevatorUp extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

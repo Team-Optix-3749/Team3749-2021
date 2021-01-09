@@ -8,21 +8,19 @@ import frc.robot.Constants;
 
 /**
  * Command that Shoots at velocity provided by double supplier
- * 
  * @author Rohan Juneja
  * @author Aadit Gupta
  */
 public class Shoot extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Shooter m_shooter;
   private final DoubleSupplier m_controllerInput;
 
   /**
    * Creates a new Shoot Command.
    *
-   * @param subsystem       The Shooter used by this command
-   * @param controllerInput A double supplier providing the encoder input ( Should
-   *                        be 0-1, will be scaled to 0-5500 RPM )
+   * @param subsystem The Shooter used by this command
+   * @param controllerInput A double supplier providing the encoder input ( Should be 0-1, will be scaled to 0-5500 RPM )
    */
   public Shoot(Shooter shooter, DoubleSupplier controllerInput) {
     m_shooter = shooter;
