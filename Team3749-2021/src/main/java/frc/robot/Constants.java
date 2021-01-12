@@ -27,6 +27,11 @@ public final class Constants {
 
   public static class Drivetrain {
     public static final double kDriveSpeed = 1.0;
+    public static final double kMaxSpeed = 3.0;
+    public static final double kMaxAngularSpeed = Math.PI;
+    public static final double kTrackWidth = 0.381 * 2;
+    public static final double kWheelRadius = 0.0508;
+    public static final int kEncoderResolution = -4096;
   }
 
   public static class Shooter {
