@@ -45,13 +45,6 @@ public class Drivetrain extends SubsystemBase {
 
   // public AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
-  public static final double kMaxSpeed = 3.0;
-  public static final double kMaxAngularSpeed = Math.PI;
-
-  private static final double kTrackWidth = 0.381 * 2;
-  private static final double kWheelRadius = 0.0508;
-  private static final int kEncoderResolution = -4096;
-
   private final Encoder m_leftEncoder = new Encoder(0, 1);
   private final Encoder m_rightEncoder = new Encoder(2, 3);
 
@@ -60,7 +53,8 @@ public class Drivetrain extends SubsystemBase {
 
   private final AnalogGyro m_gyro = new AnalogGyro(0);
 
-  private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(kTrackWidth);
+  private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(
+      Constants.Drivetrain.kTrackWidth);
   private final DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
 
   private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(1, 3);
@@ -72,13 +66,15 @@ public class Drivetrain extends SubsystemBase {
   private final LinearSystem<N2, N2, N2> m_drivetrainSystem = LinearSystemId.identifyDrivetrainSystem(1.98, 0.2, 1.5,
       0.3);
   private final DifferentialDrivetrainSim m_drivetrainSimulator = new DifferentialDrivetrainSim(m_drivetrainSystem,
-      DCMotor.getCIM(2), 8, kTrackWidth, kWheelRadius, null);
+      DCMotor.getCIM(2), 8, Constants.Drivetrain.kTrackWidth, Constants.Drivetrain.kWheelRadius, null);
 
   public Drivetrain() {
-    // m_gyro.reset();
+    m_gyro.reset();
 
-    m_leftEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolution);
-    m_rightEncoder.setDistancePerPulse(2 * Math.PI * kWheelRadius / kEncoderResolution);
+    m_leftEncoder
+        .setDistancePerPulse(2 * Math.PI * Constants.Drivetrain.kWheelRadius / Constants.Drivetrain.kEncoderResolution);
+    m_rightEncoder
+        .setDistancePerPulse(2 * Math.PI * Constants.Drivetrain.kWheelRadius / Constants.Drivetrain.kEncoderResolution);
 
     m_leftEncoder.reset();
     m_rightEncoder.reset();
@@ -179,10 +175,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public DifferentialDriveWheelSpeeds getSpeeds() {
-    return new DifferentialDriveWheelSpeeds(
-      m_leftEncoderSim.getRate(),
-      m_rightEncoderSim.getRate()
-    );
+    return new DifferentialDriveWheelSpeeds(m_leftEncoderSim.getRate(), m_rightEncoderSim.getRate());
   }
 
   public DifferentialDriveKinematics getKinematics() {
