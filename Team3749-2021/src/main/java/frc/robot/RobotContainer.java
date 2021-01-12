@@ -20,15 +20,12 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
 public class RobotContainer {
-  // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drivetrain m_drive = new Drivetrain();
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
 
   public XboxController m_xboxController = new XboxController(0);
-
-  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
   public RobotContainer() {
     configureButtonBindings();

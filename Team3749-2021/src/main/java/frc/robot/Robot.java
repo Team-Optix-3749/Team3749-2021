@@ -1,31 +1,13 @@
 package frc.robot;
 
-import java.util.Arrays;
-import java.util.List;
-
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.controller.RamseteController;
-import edu.wpi.first.wpilibj.geometry.Pose2d;
-import edu.wpi.first.wpilibj.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
-import edu.wpi.first.wpilibj.trajectory.Trajectory;
-import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
-import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
-import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.RamseteCommand;
-import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private static RobotContainer m_robotContainer;
-
-  private final RamseteController m_ramsete = new RamseteController();
-  private final Timer m_timer = new Timer();
-  private Trajectory m_trajectory;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -77,15 +59,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    // if (m_autonomousCommand != null) {
-    //   m_autonomousCommand.schedule();
-    // }
-
-    // m_timer.reset();
-    // m_timer.start();
-    // m_drive.resetOdometry(m_trajectory.getInitialPose());
-
     m_robotContainer.reset();
     m_robotContainer.getAutonomousCommand().schedule();
   }
@@ -93,10 +66,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    // double elapsed = m_timer.get();
-    // Trajectory.State reference = m_trajectory.sample(elapsed);
-    // ChassisSpeeds speeds = m_ramsete.calculate(m_drive.getPose(), reference);
-    // m_drive.drive(speeds.vxMetersPerSecond, speeds.omegaRadiansPerSecond);
     CommandScheduler.getInstance().run();
   }
 
