@@ -1,13 +1,29 @@
 package frc.robot;
 
+import java.util.List;
+
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.controller.RamseteController;
+import edu.wpi.first.wpilibj.geometry.Pose2d;
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
+import edu.wpi.first.wpilibj.trajectory.Trajectory;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private static RobotContainer m_robotContainer;
+  private static Drivetrain m_drive = new Drivetrain();
+
+  private final RamseteController m_ramsete = new RamseteController();
+  private final Timer m_timer = new Timer();
+  private Trajectory m_trajectory;
 
   /**
    * This function is run when the robot is first started up and should be used
