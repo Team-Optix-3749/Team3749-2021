@@ -34,9 +34,6 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
 
     setNetworkTablesFlushEnabled(true);
-
-    m_trajectory = TrajectoryGenerator.generateTrajectory(new Pose2d(2, 2, new Rotation2d()), List.of(),
-        new Pose2d(6, 4, new Rotation2d()), new TrajectoryConfig(2, 2));
   }
 
   /**
@@ -78,23 +75,14 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    // if (m_autonomousCommand != null) {
-    //   m_autonomousCommand.schedule();
-    // }
-
-    m_timer.reset();
-    m_timer.start();
-    m_drive.resetOdometry(m_trajectory.getInitialPose());
+    m_robotContainer.reset();
+    m_robotContainer.getAutonomousCommand().schedule();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    double elapsed = m_timer.get();
-    Trajectory.State reference = m_trajectory.sample(elapsed);
-    ChassisSpeeds speeds = m_ramsete.calculate(m_drive.getPose(), reference);
-    m_drive.drive(speeds.vxMetersPerSecond, speeds.omegaRadiansPerSecond);
+    CommandScheduler.getInstance().run();
   }
 
   @Override
@@ -122,6 +110,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void simulationPeriodic() {
-    m_drive.simulationPeriodic();
+    m_robotContainer.getDrivetrain().simulationPeriodic();
   }
 }

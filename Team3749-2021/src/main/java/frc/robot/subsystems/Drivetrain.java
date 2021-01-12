@@ -154,6 +154,11 @@ public class Drivetrain extends SubsystemBase {
     m_rightBackMotor.set(ControlMode.PercentOutput, speed);
   }
 
+  public void setOutputVolts(double leftVolts, double rightVolts) {
+    m_leftMotors.set(leftVolts / 12);
+    m_rightMotors.set(rightVolts / 12);
+  }
+
   public void stopMotors() {
     speedLeftMotors(0);
     speedRightMotors(0);
@@ -173,11 +178,42 @@ public class Drivetrain extends SubsystemBase {
     return Rotation2d.fromDegrees(-m_gyro.getAngle());
   }
 
+  public DifferentialDriveWheelSpeeds getSpeeds() {
+    return new DifferentialDriveWheelSpeeds(
+      m_leftEncoderSim.getRate(),
+      m_rightEncoderSim.getRate()
+    );
+  }
+
+  public DifferentialDriveKinematics getKinematics() {
+    return m_kinematics;
+  }
+
+  public SimpleMotorFeedforward getFeedforward() {
+    return m_feedforward;
+  }
+
+  public PIDController getLeftPIDController() {
+    return m_leftPIDController;
+  }
+
+  public PIDController getRightPIDController() {
+    return m_rightPIDController;
+  }
+
+  public Rotation2d getHeading() {
+    return Rotation2d.fromDegrees(-m_gyro.getAngle());
+  }
+
   /**
    * Resets gyro
    */
   public void resetGyro() {
     m_gyro.reset();
+  }
+
+  public void reset() {
+    m_odometry.resetPosition(new Pose2d(), getHeading());
   }
 
   public void periodic() {
