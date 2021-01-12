@@ -1,5 +1,6 @@
 package frc.robot;
 
+import java.util.Arrays;
 import java.util.List;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -11,15 +12,16 @@ import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
+import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import frc.robot.subsystems.Drivetrain;
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private static RobotContainer m_robotContainer;
-  private static Drivetrain m_drive = new Drivetrain();
 
   private final RamseteController m_ramsete = new RamseteController();
   private final Timer m_timer = new Timer();
@@ -34,9 +36,6 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
 
     setNetworkTablesFlushEnabled(true);
-
-    m_trajectory = TrajectoryGenerator.generateTrajectory(new Pose2d(2, 2, new Rotation2d()), List.of(),
-        new Pose2d(6, 4, new Rotation2d()), new TrajectoryConfig(2, 2));
   }
 
   /**
@@ -83,18 +82,22 @@ public class Robot extends TimedRobot {
     //   m_autonomousCommand.schedule();
     // }
 
-    m_timer.reset();
-    m_timer.start();
-    m_drive.resetOdometry(m_trajectory.getInitialPose());
+    // m_timer.reset();
+    // m_timer.start();
+    // m_drive.resetOdometry(m_trajectory.getInitialPose());
+
+    m_robotContainer.reset();
+    m_robotContainer.getAutonomousCommand().schedule();
   }
 
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    double elapsed = m_timer.get();
-    Trajectory.State reference = m_trajectory.sample(elapsed);
-    ChassisSpeeds speeds = m_ramsete.calculate(m_drive.getPose(), reference);
-    m_drive.drive(speeds.vxMetersPerSecond, speeds.omegaRadiansPerSecond);
+    // double elapsed = m_timer.get();
+    // Trajectory.State reference = m_trajectory.sample(elapsed);
+    // ChassisSpeeds speeds = m_ramsete.calculate(m_drive.getPose(), reference);
+    // m_drive.drive(speeds.vxMetersPerSecond, speeds.omegaRadiansPerSecond);
+    CommandScheduler.getInstance().run();
   }
 
   @Override
@@ -122,6 +125,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void simulationPeriodic() {
-    m_drive.simulationPeriodic();
+    m_robotContainer.getDrivetrain().simulationPeriodic();
   }
 }
