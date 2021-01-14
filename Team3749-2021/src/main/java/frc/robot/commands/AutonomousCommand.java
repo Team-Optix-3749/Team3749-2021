@@ -44,9 +44,9 @@ public class AutonomousCommand extends CommandBase {
     var initialState = m_trajectory.sample(0);
     var angularVelocity = initialState.curvatureRadPerMeter * initialState.velocityMetersPerSecond;
     m_prevSpeeds = m_drive.getKinematics().toWheelSpeeds(
-        new ChassisSpeeds(
-          initialState.velocityMetersPerSecond, 0, angularVelocity
-        )
+      new ChassisSpeeds(
+        initialState.velocityMetersPerSecond, 0, angularVelocity
+      )
     );
     m_timer.reset();
     m_timer.start();
