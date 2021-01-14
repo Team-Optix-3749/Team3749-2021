@@ -5,16 +5,8 @@ import java.util.Arrays;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import edu.wpi.first.wpilibj.controller.RamseteController;
-import edu.wpi.first.wpilibj.geometry.Pose2d;
-import edu.wpi.first.wpilibj.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.trajectory.Trajectory;
-import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
-import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
-import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -24,6 +16,7 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
+  private final AutonomousCommand m_autoCommand = new AutonomousCommand(m_drive);
 
   public XboxController m_xboxController = new XboxController(0);
 
@@ -60,19 +53,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // return m_autoCommand;
-
-    TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(5.0), Units.feetToMeters(5.0));
-    config.setKinematics(m_drive.getKinematics());
-
-    Trajectory trajectory = TrajectoryGenerator.generateTrajectory(Arrays.asList(new Pose2d(),
-        new Pose2d(1.0, 0, new Rotation2d()), new Pose2d(2.3, 1.2, Rotation2d.fromDegrees(90.0))), config);
-
-    RamseteCommand command = new RamseteCommand(trajectory, m_drive::getPose, new RamseteController(2.0, 0.7),
-        m_drive.getFeedforward(), m_drive.getKinematics(), m_drive::getSpeeds, m_drive.getLeftPIDController(),
-        m_drive.getRightPIDController(), m_drive::setOutputVolts, m_drive);
-
-    return command.andThen(() -> m_drive.setOutputVolts(0, 0));
+    return m_autoCommand;
   }
 
   /**
