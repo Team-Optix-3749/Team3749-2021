@@ -41,4 +41,9 @@ public final class Constants {
     public static final int maxRPM = 5500;
     public static final int maxVoltage = 12;
   }
+
+  public static class Autonomous {
+    public static final double kB = 2.0;
+    public static final double kZeta = 0.7;
+  }
 }
