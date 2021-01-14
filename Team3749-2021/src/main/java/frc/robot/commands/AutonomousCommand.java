@@ -33,7 +33,7 @@ public class AutonomousCommand extends CommandBase {
     m_trajectory = TrajectoryGenerator.generateTrajectory(Arrays.asList(new Pose2d(),
         new Pose2d(1.0, 0, new Rotation2d()), new Pose2d(2.3, 1.2, Rotation2d.fromDegrees(90.0))), config);
 
-    m_follower = new RamseteController(Constants.Autonomous.b, Constants.Autonomous.zeta);
+    m_follower = new RamseteController(Constants.Autonomous.kB, Constants.Autonomous.kZeta);
     
     addRequirements(drivetrain);
   }
@@ -42,12 +42,12 @@ public class AutonomousCommand extends CommandBase {
   public void initialize() {
     m_prevTime = -1;
     var initialState = m_trajectory.sample(0);
-    m_prevSpeeds =
-        m_drive.getKinematics().toWheelSpeeds(
-            new ChassisSpeeds(
-                initialState.velocityMetersPerSecond,
-                0,
-                initialState.curvatureRadPerMeter * initialState.velocityMetersPerSecond));
+    var angularVelocity = initialState.curvatureRadPerMeter * initialState.velocityMetersPerSecond;
+    m_prevSpeeds = m_drive.getKinematics().toWheelSpeeds(
+        new ChassisSpeeds(
+          initialState.velocityMetersPerSecond, 0, angularVelocity
+        )
+    );
     m_timer.reset();
     m_timer.start();
     m_drive.getLeftPIDController().reset();

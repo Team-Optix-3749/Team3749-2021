@@ -43,7 +43,7 @@ public final class Constants {
   }
 
   public static class Autonomous {
-    public static final double b = 2.0;
-    public static final double zeta = 0.7;
+    public static final double kB = 2.0;
+    public static final double kZeta = 0.7;
   }
 }
