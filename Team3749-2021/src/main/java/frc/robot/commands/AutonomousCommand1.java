@@ -28,29 +28,27 @@ public class AutonomousCommand1 extends CommandBase {
   public AutonomousCommand1(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
-    TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(5.0), Units.feetToMeters(5.0));
+    TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
 
     m_trajectory = TrajectoryGenerator.generateTrajectory(
-    // Start at the origin facing the +X direction
-    new Pose2d(0, 0, new Rotation2d(0)),
-    // Pass through these two interior waypoints, making an 's' curve path
+    // origin
+    new Pose2d(1, 1, new Rotation2d(0)),
+    // waypoints
     List.of(
-      new Translation2d(1, 1),
-      new Translation2d(2, 2),
-      new Translation2d(4, 3),
-      new Translation2d(6, 2.5),
-      new Translation2d(8, 1),
-      new Translation2d(9, 2.5),
-      new Translation2d(8, 3),
-      new Translation2d(6, 1.5),
-      new Translation2d(4, 1),
-      new Translation2d(2, 1),
-      new Translation2d(1, 1)
+      new Translation2d(5, 3.5),
+      new Translation2d(11, 3.5),
+      new Translation2d(13, 2),
+      new Translation2d(14.5, 2.5),
+      new Translation2d(14.5, 3.5),
+      new Translation2d(13, 3.5),
+      new Translation2d(11, 1.5),
+      new Translation2d(5, 1.5),
+      new Translation2d(3, 3.5)
     ),
-    // End 3 meters straight ahead of where we started, facing forward
-    new Pose2d(1.1, 0, new Rotation2d(0)),
-    // Pass config
+    // end point
+    new Pose2d(1, 3.5, new Rotation2d(0)),
+    // config
     config);
 
     m_drive.resetOdometry(m_trajectory.getInitialPose());
