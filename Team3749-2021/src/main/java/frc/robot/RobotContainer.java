@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Paths.Paths;
+import frc.robot.paths.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
