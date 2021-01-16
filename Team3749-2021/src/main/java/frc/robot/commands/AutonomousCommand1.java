@@ -33,19 +33,23 @@ public class AutonomousCommand1 extends CommandBase {
 
     m_trajectory = TrajectoryGenerator.generateTrajectory(
     // Start at the origin facing the +X direction
-    new Pose2d(0, 1, new Rotation2d(0)),
+    new Pose2d(0, 0, new Rotation2d(0)),
     // Pass through these two interior waypoints, making an 's' curve path
     List.of(
-    new Translation2d(1, 1),
-    new Translation2d(2, 1.5),
-    new Translation2d(4, 2),
-    new Translation2d(6, 1.5),
-    // new Translation2d(7, 1),
-    new Translation2d(8, 1),
-    new Translation2d(9, 1.5)
+      new Translation2d(1, 1),
+      new Translation2d(2, 2),
+      new Translation2d(4, 3),
+      new Translation2d(6, 2.5),
+      new Translation2d(8, 1),
+      new Translation2d(9, 2.5),
+      new Translation2d(8, 3),
+      new Translation2d(6, 1.5),
+      new Translation2d(4, 1),
+      new Translation2d(2, 1),
+      new Translation2d(1, 1)
     ),
     // End 3 meters straight ahead of where we started, facing forward
-    new Pose2d(9, 0, new Rotation2d(0)),
+    new Pose2d(1.1, 0, new Rotation2d(0)),
     // Pass config
     config);
 
