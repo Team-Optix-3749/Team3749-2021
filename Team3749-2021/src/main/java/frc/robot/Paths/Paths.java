@@ -19,11 +19,11 @@ public class Paths {
       new Translation2d(14.5, 2.5),
       new Translation2d(14.5, 3.5),
       new Translation2d(13, 3.5),
-      new Translation2d(11, 1.5),
-      new Translation2d(5, 1.5),
+      new Translation2d(11, 2),
+      new Translation2d(5, 2),
       new Translation2d(3, 3.5)
     ),
     // end point
-    new Pose2d(1, 3.5, new Rotation2d(0))
+    new Pose2d(1, 4, new Rotation2d(Math.PI))
   );
 }
