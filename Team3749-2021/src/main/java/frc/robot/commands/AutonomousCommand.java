@@ -3,6 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.controller.RamseteController;
 import edu.wpi.first.wpilibj.geometry.Pose2d;
@@ -13,14 +15,17 @@ import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj.util.Units;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 public class AutonomousCommand extends CommandBase {
   private final Timer m_timer = new Timer();
   private final Drivetrain m_drive;
-  private final Trajectory m_trajectory;
+  private Trajectory m_trajectory = new Trajectory();
   private final RamseteController m_follower;
   private DifferentialDriveWheelSpeeds m_prevSpeeds;
   private double m_prevTime;
@@ -28,19 +33,49 @@ public class AutonomousCommand extends CommandBase {
   public AutonomousCommand(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
+    String trajectoryJSON = "paths/output/test.wpilib.json";
+
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(5.0), Units.feetToMeters(5.0));
     config.setKinematics(m_drive.getKinematics());
 
-    m_trajectory = TrajectoryGenerator.generateTrajectory(
-        // Start at the origin facing the +X direction
-        new Pose2d(0, 0, new Rotation2d(0)),
-        // Pass through these two interior waypoints, making an 's' curve path
-        List.of(new Translation2d(1, 1), 
-        new Translation2d(2, 1)),
-        // End 3 meters straight ahead of where we started, facing forward
-        new Pose2d(3, 0, new Rotation2d(0)),
-        // Pass config
-        config);
+    // m_trajectory = TrajectoryGenerator.generateTrajectory(
+    // // Start at the origin facing the +X direction
+    // new Pose2d(0, 0, new Rotation2d(0)),
+    // // Pass through these two interior waypoints, making an 's' curve path
+    // List.of(new Translation2d(1, 1),
+    // new Translation2d(2, 1)),
+    // // End 3 meters straight ahead of where we started, facing forward
+    // new Pose2d(3, 0, new Rotation2d(0)),
+    // // Pass config
+    // config);
+
+    // m_trajectory = TrajectoryGenerator.generateTrajectory(
+    // // Start at the origin facing the +X direction
+    // new Pose2d(0, 1, new Rotation2d(0)),
+    // // Pass through these two interior waypoints, making an 's' curve path
+    // List.of(
+    // new Translation2d(1, 1),
+    // new Translation2d(2, 1.5),
+    // new Translation2d(4, 2),
+    // new Translation2d(6, 1.5),
+    // // new Translation2d(7, 1),
+    // new Translation2d(8, 1),
+    // new Translation2d(9, 1.5)
+    // ),
+    // // End 3 meters straight ahead of where we started, facing forward
+    // new Pose2d(9, 0, new Rotation2d(0)),
+    // // Pass config
+    // config);
+
+    try {
+      Path m_trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
+      m_trajectory = TrajectoryUtil.fromPathweaverJson(m_trajectoryPath);
+    } catch (IOException ex) {
+      DriverStation.reportError("Unable to open trajectory: " + trajectoryJSON, ex.getStackTrace());
+      System.out.println("Unable to open trajectory");
+    }
+
+    m_drive.resetOdometry(m_trajectory.getInitialPose());
 
     m_follower = new RamseteController(Constants.Autonomous.kB, Constants.Autonomous.kZeta);
 
