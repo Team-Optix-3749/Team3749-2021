@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.paths.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -15,7 +14,7 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
-  private final AutoNavPath m_autoCommand = new AutoNavPath(m_drive, Paths.ANSlalom);
+  private final AutoNavPath m_autoCommand = new AutoNavPath(m_drive, Constants.Autonomous.AutoPath);
 
   public XboxController m_xboxController = new XboxController(0);
 

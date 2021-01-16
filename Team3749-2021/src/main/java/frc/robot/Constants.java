@@ -1,5 +1,7 @@
 package frc.robot;
 
+import frc.robot.paths.*;
+
 public final class Constants {
   public static class CAN {
     public static final int drive_lf = 11;
@@ -45,5 +47,6 @@ public final class Constants {
   public static class Autonomous {
     public static final double kB = 2.0;
     public static final double kZeta = 0.7;
+    public static final Path AutoPath = Paths.ANSlalom;
   }
 }
