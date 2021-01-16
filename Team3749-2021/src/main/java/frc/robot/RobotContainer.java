@@ -14,7 +14,7 @@ public class RobotContainer {
   private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
-  private final AutonomousCommand m_autoCommand = new AutonomousCommand(m_drive);
+  private final ANSlalomPath m_autoCommand = new ANSlalomPath(m_drive);
 
   public XboxController m_xboxController = new XboxController(0);
 
