@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.util.Units;
 
-
 public class AutoNavPath extends CommandBase {
   private final Timer m_timer = new Timer();
   private final Drivetrain m_drive;
