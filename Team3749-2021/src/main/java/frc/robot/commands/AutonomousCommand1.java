@@ -49,7 +49,6 @@ public class AutonomousCommand1 extends CommandBase {
     // Pass config
     config);
 
-    System.out.println(m_trajectory.getInitialPose());
     m_drive.resetOdometry(m_trajectory.getInitialPose());
 
     m_follower = new RamseteController(Constants.Autonomous.kB, Constants.Autonomous.kZeta);
