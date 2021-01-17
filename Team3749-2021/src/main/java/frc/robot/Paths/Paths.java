@@ -76,6 +76,19 @@ public class Paths {
     new Pose2d(15, 7, new Rotation2d(0))
   );
 
+  public static Path GSRedPathB = new Path(
+    // origin
+    new Pose2d(0.5, 7.5, new Rotation2d(0)),
+    // waypoints
+    List.of(
+      new Translation2d(4, 5.2),
+      new Translation2d(6.5, 2.8),
+      new Translation2d(10, 6)
+    ),
+    // end point
+    new Pose2d(15, 7.5, new Rotation2d(0))
+  );
+
   public static Path GSBluePathA = new Path(
     // origin
     new Pose2d(0.5, 1, new Rotation2d(0)),
