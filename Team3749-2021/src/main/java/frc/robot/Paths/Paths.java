@@ -41,9 +41,25 @@ public class Paths {
       new Translation2d(10.5, 4),
       new Translation2d(13.5, 2),
       new Translation2d(13.5, 4)
-      // new Translation2d(6, 3)
     ),
     // end point
     new Pose2d(1, 4, new Rotation2d(Math.PI))
+  );
+
+  public static Path ANBouncePath = new Path(
+    // origin
+    new Pose2d(1, 4, new Rotation2d(0)),
+    // waypoints
+    List.of(
+      new Translation2d(4, 6.5),
+      new Translation2d(6, 2),
+      new Translation2d(8, 3),
+      new Translation2d(8, 6.5),
+      new Translation2d(9, 2),
+      new Translation2d(12.2, 3),
+      new Translation2d(12.2, 6.5)
+    ),
+    // end point
+    new Pose2d(15, 4, new Rotation2d(0))
   );
 }
