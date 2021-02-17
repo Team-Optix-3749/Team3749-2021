@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
  * Class that stores an autonomous path
  * @author Rohan
  */
-
 public class Path {
   private final Pose2d origin;
 
