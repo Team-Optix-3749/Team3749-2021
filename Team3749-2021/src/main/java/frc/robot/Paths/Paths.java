@@ -1,4 +1,4 @@
-package frc.robot.paths;
+package frc.robot.Paths;
 
 import java.util.List;
 
