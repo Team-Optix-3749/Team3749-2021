@@ -1,6 +1,6 @@
 package frc.robot;
 
-import frc.robot.Paths.*;
+import frc.robot.paths.*;
 
 public final class Constants {
   public static class CAN {

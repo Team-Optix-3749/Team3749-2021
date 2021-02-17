@@ -3,14 +3,13 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.Paths.*;
+import frc.robot.paths.*;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.controller.RamseteController;
 import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
-import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj.util.Units;
 
 public class AutoNavPath extends CommandBase {
@@ -27,7 +26,7 @@ public class AutoNavPath extends CommandBase {
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
 
-    m_trajectory = TrajectoryGenerator.generateTrajectory(path.origin, path.waypoints, path.end, config);
+    m_trajectory = path.getTrajectory(config);
 
     m_drive.resetOdometry(m_trajectory.getInitialPose());
 

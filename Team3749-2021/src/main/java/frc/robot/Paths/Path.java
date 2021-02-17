@@ -1,18 +1,43 @@
-package frc.robot.Paths;
+package frc.robot.paths;
 
 import java.util.List;
 
 import edu.wpi.first.wpilibj.geometry.Pose2d;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
+import edu.wpi.first.wpilibj.trajectory.Trajectory;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
+
+/**
+ * Class that stores an autonomous path
+ * @author Rohan
+ */
 
 public class Path {
-  public Pose2d origin;
-  public List<Translation2d> waypoints;
-  public Pose2d end;
+  private final Pose2d origin;
 
-  public Path(Pose2d origin, List<Translation2d> waypoints, Pose2d end) {
+  private final List<Translation2d> waypoints;
+
+  private final Pose2d destination;
+
+  /**
+   * Creates a new path object
+   * @param origin Position/Rotation of origin
+   * @param waypoints List of Points which need to be visited en route to the destination
+   * @param destination Position/Rotation of destination
+   */
+  public Path(Pose2d origin, List<Translation2d> waypoints, Pose2d destination) {
     this.origin = origin;
     this.waypoints = waypoints;
-    this.end = end;
+    this.destination = destination;
+  }
+
+  /**
+   * 
+   * @param config An object containing configuration settings for the trajectory
+   * @return A Trajectory Object
+   */
+  public Trajectory getTrajectory(TrajectoryConfig config) {
+    return TrajectoryGenerator.generateTrajectory(origin, waypoints, destination, config);
   }
 }
