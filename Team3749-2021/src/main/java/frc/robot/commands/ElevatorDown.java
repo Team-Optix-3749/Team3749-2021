@@ -3,6 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Elevator;
 
+//executes the downElevator method until a desired position is reached, then stops it
+
+
 /** An example command that uses an example subsystem. */
 public class ElevatorDown extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
