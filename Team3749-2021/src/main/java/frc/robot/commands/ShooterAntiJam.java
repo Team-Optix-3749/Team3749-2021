@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
 /**
- * The Shooter Subsystem used by the command
+ * The Shooter Subsystem used with ShooterAntiJam command
  */
 public class ShooterAntiJam extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})

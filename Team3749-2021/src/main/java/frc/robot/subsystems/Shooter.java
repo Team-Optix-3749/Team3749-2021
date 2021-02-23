@@ -17,6 +17,7 @@ import com.revrobotics.ControlType;
  * @author Rohan Juneja
  */
 
+// Constructor for Shooter
 public class Shooter extends SubsystemBase {
   private CANSparkMax m_shooterMotor;
   private CANEncoder m_encoder;
