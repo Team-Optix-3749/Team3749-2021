@@ -32,7 +32,7 @@ public class Path {
   }
 
   /**
-   * 
+   * Generates trajectory for the path given the config
    * @param config An object containing configuration settings for the trajectory
    * @return A Trajectory Object
    */
