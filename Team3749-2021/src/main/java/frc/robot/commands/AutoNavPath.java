@@ -12,14 +12,24 @@ import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
 import edu.wpi.first.wpilibj.util.Units;
 
+/**
+ * An autonomous command to follow a path
+ * @author Rohan
+ * @author Raadwan
+ */
 public class AutoNavPath extends CommandBase {
   private final Timer m_timer = new Timer();
   private final Drivetrain m_drive;
-  private Trajectory m_trajectory = new Trajectory();
+  private Trajectory m_trajectory;
   private final RamseteController m_follower;
   private DifferentialDriveWheelSpeeds m_prevSpeeds;
   private double m_prevTime;
 
+  /**
+   * Creates an ``AutoNavPath`` object
+   * @param drivetrain The drivetrain subsystem
+   * @param path The path to follow
+   */
   public AutoNavPath(Drivetrain drivetrain, Path path) {
     m_drive = drivetrain;
 
@@ -35,6 +45,9 @@ public class AutoNavPath extends CommandBase {
     addRequirements(drivetrain);
   }
 
+  /**
+   * Runs when the command is initialized
+   */
   @Override
   public void initialize() {
     m_prevTime = -1;
@@ -48,6 +61,9 @@ public class AutoNavPath extends CommandBase {
     m_drive.getRightPIDController().reset();
   }
 
+  /**
+   * Runs when the command is executed
+   */
   @Override
   public void execute() {
     double curTime = m_timer.get();
@@ -84,12 +100,18 @@ public class AutoNavPath extends CommandBase {
     m_prevTime = curTime;
   }
 
+  /**
+   * Runs when the command is stopped
+   */
   @Override
   public void end(boolean interrupted) {
     m_drive.setOutputVolts(0, 0);
     m_timer.stop();
   }
 
+  /**
+   * Returns whether the command has been completed
+   */
   @Override
   public boolean isFinished() {
     return m_timer.hasElapsed(m_trajectory.getTotalTimeSeconds());
