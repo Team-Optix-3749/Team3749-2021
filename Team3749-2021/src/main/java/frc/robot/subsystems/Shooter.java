@@ -23,7 +23,7 @@ public class Shooter extends SubsystemBase {
   private CANPIDController m_controller;
 
   /**
-   * Constructor
+   * Constructor for Shooter
    */
   public Shooter() {
     m_shooterMotor = new CANSparkMax(Constants.CAN.shooter_motor, MotorType.kBrushless);
