@@ -82,6 +82,10 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putData("Field", m_fieldSim);
   }
 
+  /**
+   * Sets drve speeds
+   * @param speeds differential drive wheel speeds
+   */
   public void setSpeeds(DifferentialDriveWheelSpeeds speeds) {
     var leftFeedforward = m_feedforward.calculate(speeds.leftMetersPerSecond);
     var rightFeedforward = m_feedforward.calculate(speeds.rightMetersPerSecond);
@@ -92,14 +96,26 @@ public class Drivetrain extends SubsystemBase {
     m_rightMotors.setVoltage(rightOutput + rightFeedforward);
   }
 
+  /**
+   * Drive robot
+   * @param xSpeed drive speed
+   * @param rot rotation
+   */
   public void drive(double xSpeed, double rot) {
     setSpeeds(m_kinematics.toWheelSpeeds(new ChassisSpeeds(xSpeed, 0, rot)));
   }
 
+  /**
+   * update drivetrain odometry
+   */
   public void updateOdometry() {
     m_odometry.update(m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
   }
 
+  /**
+   * reset drivetrain odometry
+   * @param pose Pose2d
+   */
   public void resetOdometry(Pose2d pose) {
     m_leftEncoder.reset();
     m_rightEncoder.reset();
@@ -107,10 +123,18 @@ public class Drivetrain extends SubsystemBase {
     m_odometry.resetPosition(pose, m_gyro.getRotation2d());
   }
 
+  /**
+   * get pose
+   * @return pose in meters
+   */
   public Pose2d getPose() {
     return m_odometry.getPoseMeters();
   }
 
+  /**
+   * simulation periodic
+   * runs in cylces during simulation
+   */
   public void simulationPeriodic() {
     m_drivetrainSimulator.setInputs(m_leftMotors.get() * RobotController.getInputVoltage(),
         m_rightMotors.get() * RobotController.getInputVoltage());
@@ -123,43 +147,83 @@ public class Drivetrain extends SubsystemBase {
     m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
   }
 
+  /**
+   * curvature drive
+   * @param fwd drive along x-axis (positive is forward, negative is backward)
+   * @param rot rotation along z-axis
+   */
   public void curvatureDrive(double fwd, double rot) {
     m_drive.curvatureDrive(fwd, rot, true);
   }
 
+  /**
+   * arcade drive
+   * @param fwd drive along x-axis (positive is forward, negative is backward)
+   * @param rot rotation along z-axis
+   */
   public void arcadeDrive(double fwd, double rot) {
     m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot, true);
   }
 
+  /**
+   * classic tank drive
+   * @param leftSpeed speed of left side
+   * @param rightSpeed speed of right side
+   */
   public void tankDrive(double leftSpeed, double rightSpeed) {
     m_drive.tankDrive(-leftSpeed, -rightSpeed);
   }
 
+  /**
+   * set motor speeds
+   * @param leftSpeed speed of left side
+   * @param rightSpeed speed of right side
+   */
   public void setMotors(double leftSpeed, double rightSpeed) {
     speedLeftMotors(leftSpeed);
     speedRightMotors(rightSpeed);
   }
 
+  /**
+   * speed of left side
+   * @param speed speed (duh)
+   */
   public void speedLeftMotors(double speed) {
     m_leftFrontMotor.set(ControlMode.PercentOutput, -speed);
     m_leftBackMotor.set(ControlMode.PercentOutput, -speed);
   }
 
+  /**
+   * speed of right side
+   * @param speed speed (duh)
+   */
   public void speedRightMotors(double speed) {
     m_rightFrontMotor.set(ControlMode.PercentOutput, speed);
     m_rightBackMotor.set(ControlMode.PercentOutput, speed);
   }
 
+  /**
+   * set motor volts
+   * @param leftVolts left side speeds
+   * @param rightVolts right side speeds
+   */
   public void setOutputVolts(double leftVolts, double rightVolts) {
     m_leftMotors.set(leftVolts / 12);
     m_rightMotors.set(rightVolts / 12);
   }
 
+  /**
+   * stop motors (set speed to speed 0)
+   */
   public void stopMotors() {
     speedLeftMotors(0);
     speedRightMotors(0);
   }
 
+  /**
+   * set max output
+   * @param maxOutput max output
+   */
   public void setMaxOutput(double maxOutput) {
     m_drive.setMaxOutput(maxOutput);
   }
@@ -174,26 +238,50 @@ public class Drivetrain extends SubsystemBase {
     return Rotation2d.fromDegrees(-m_gyro.getAngle());
   }
 
+  /**
+   * set get differential drive speeds
+   * @return return differential drive speeds
+   */
   public DifferentialDriveWheelSpeeds getSpeeds() {
     return new DifferentialDriveWheelSpeeds(m_leftEncoderSim.getRate(), m_rightEncoderSim.getRate());
   }
 
+  /**
+   * get kinematics
+   * @return m_kinematics
+   */
   public DifferentialDriveKinematics getKinematics() {
     return m_kinematics;
   }
 
+  /**
+   * get feedforward
+   * @return m_feedforward
+   */
   public SimpleMotorFeedforward getFeedforward() {
     return m_feedforward;
   }
 
+  /**
+   * get left PID controller
+   * @return m_leftPIDController
+   */
   public PIDController getLeftPIDController() {
     return m_leftPIDController;
   }
 
+  /**
+   * get rid PID controller
+   * @return m_rightPIDController
+   */
   public PIDController getRightPIDController() {
     return m_rightPIDController;
   }
 
+  /**
+   * get heading
+   * @return heading
+   */
   public Rotation2d getHeading() {
     return Rotation2d.fromDegrees(-m_gyro.getAngle());
   }
@@ -205,10 +293,16 @@ public class Drivetrain extends SubsystemBase {
     m_gyro.reset();
   }
 
+  /**
+   * reset stuff
+   */
   public void reset() {
     m_odometry.resetPosition(new Pose2d(), getHeading());
   }
 
+  /**
+   * runs periodically
+   */
   public void periodic() {
     updateOdometry();
     m_fieldSim.setRobotPose(m_odometry.getPoseMeters());
