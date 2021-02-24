@@ -3,6 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Elevator;
 
+//calls stopElevator method after the elevator is at the bottom
+
 /** An example command that uses an example subsystem. */
 public class ElevatorBottom extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
@@ -30,7 +32,7 @@ public class ElevatorBottom extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_elevator.stopElevator();
+    m_elevator.stopElevator(); 
   }
 
   // Returns true when the command should end.

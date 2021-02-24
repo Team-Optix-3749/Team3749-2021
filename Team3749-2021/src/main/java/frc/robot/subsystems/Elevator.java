@@ -5,9 +5,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+//Constructor for Elevator
 public class Elevator extends SubsystemBase {
   private TalonSRX m_elevator;
 
+  //setters for elevator speed; up, down, and stop
   public void upElevator() {
     m_elevator.set(ControlMode.PercentOutput, 1);
   }
