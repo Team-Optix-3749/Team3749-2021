@@ -17,14 +17,13 @@ import com.revrobotics.ControlType;
  * @author Rohan Juneja
  */
 
-// Constructor for Shooter
 public class Shooter extends SubsystemBase {
   private CANSparkMax m_shooterMotor;
   private CANEncoder m_encoder;
   private CANPIDController m_controller;
 
   /**
-   * Constructor
+   * Constructor for Shooter
    */
   public Shooter() {
     m_shooterMotor = new CANSparkMax(Constants.CAN.shooter_motor, MotorType.kBrushless);
