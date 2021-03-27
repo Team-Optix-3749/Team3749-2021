@@ -20,6 +20,13 @@ public class RobotContainer {
 
   public RobotContainer() {
     configureButtonBindings();
+    
+    // drivetrain controller bindings
+    m_drive.setDefaultCommand(
+       new ArcadeDrive(
+         m_drive,
+         () -> m_xboxController.getY(Hand.kLeft),
+         () -> m_xboxController.getX(Hand.kRight)));
   }
 
   private void configureButtonBindings() {
