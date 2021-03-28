@@ -38,17 +38,17 @@ public class RobotContainer {
     // intake out controller bindings
     new JoystickButton(m_xboxController, Button.kY.value).toggleWhenPressed(new IntakeOut(m_intake), true);
 
-    // elevator down controller bindings
+    // intake up controller bindings
     new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new IntakeUp(m_intake), true)
         .whenReleased(new IntakeStop(m_intake), true);
 
-    // intake up controller bindings
+    // intake down controller bindings
     new JoystickButton(m_xboxController, Button.kB.value).whenPressed(new IntakeDown(m_intake), true)
-        .whenReleased(new IntakeStop(m_intake), true);
+        .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // intake down controller bindings
     new JoystickButton(m_xboxController, Button.kY.value).whenPressed(new IntakeDown(m_intake), true)
-        .whenReleased(new IntakeStop(m_intake), true);
+        .whenReleased(new IntakeLiftStop(m_intake), true);
   }
 
   /**
