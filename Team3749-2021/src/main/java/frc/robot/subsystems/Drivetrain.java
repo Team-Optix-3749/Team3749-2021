@@ -84,6 +84,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * Sets drve speeds
+   * 
    * @param speeds differential drive wheel speeds
    */
   public void setSpeeds(DifferentialDriveWheelSpeeds speeds) {
@@ -98,8 +99,9 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * Drive robot
+   * 
    * @param xSpeed drive speed
-   * @param rot rotation
+   * @param rot    rotation
    */
   public void drive(double xSpeed, double rot) {
     m_drive.setSafetyEnabled(false);
@@ -116,6 +118,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * reset drivetrain odometry
+   * 
    * @param pose Pose2d
    */
   public void resetOdometry(Pose2d pose) {
@@ -127,6 +130,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * get pose
+   * 
    * @return pose in meters
    */
   public Pose2d getPose() {
@@ -134,8 +138,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   /**
-   * simulation periodic
-   * runs in cylces during simulation
+   * simulation periodic runs in cylces during simulation
    */
   public void simulationPeriodic() {
     m_drivetrainSimulator.setInputs(m_leftMotors.get() * RobotController.getInputVoltage(),
@@ -151,6 +154,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * curvature drive
+   * 
    * @param fwd drive along x-axis (positive is forward, negative is backward)
    * @param rot rotation along z-axis
    */
@@ -160,6 +164,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * arcade drive
+   * 
    * @param fwd drive along x-axis (positive is forward, negative is backward)
    * @param rot rotation along z-axis
    */
@@ -169,7 +174,8 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * classic tank drive
-   * @param leftSpeed speed of left side
+   * 
+   * @param leftSpeed  speed of left side
    * @param rightSpeed speed of right side
    */
   public void tankDrive(double leftSpeed, double rightSpeed) {
@@ -178,7 +184,8 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * set motor speeds
-   * @param leftSpeed speed of left side
+   * 
+   * @param leftSpeed  speed of left side
    * @param rightSpeed speed of right side
    */
   public void setMotors(double leftSpeed, double rightSpeed) {
@@ -188,6 +195,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * speed of left side
+   * 
    * @param speed speed (duh)
    */
   public void speedLeftMotors(double speed) {
@@ -197,6 +205,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * speed of right side
+   * 
    * @param speed speed (duh)
    */
   public void speedRightMotors(double speed) {
@@ -206,7 +215,8 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * set motor volts
-   * @param leftVolts left side speeds
+   * 
+   * @param leftVolts  left side speeds
    * @param rightVolts right side speeds
    */
   public void setOutputVolts(double leftVolts, double rightVolts) {
@@ -224,6 +234,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * set max output
+   * 
    * @param maxOutput max output
    */
   public void setMaxOutput(double maxOutput) {
@@ -242,6 +253,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * set get differential drive speeds
+   * 
    * @return return differential drive speeds
    */
   public DifferentialDriveWheelSpeeds getSpeeds() {
@@ -250,6 +262,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * get kinematics
+   * 
    * @return m_kinematics
    */
   public DifferentialDriveKinematics getKinematics() {
@@ -258,6 +271,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * get feedforward
+   * 
    * @return m_feedforward
    */
   public SimpleMotorFeedforward getFeedforward() {
@@ -266,6 +280,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * get left PID controller
+   * 
    * @return m_leftPIDController
    */
   public PIDController getLeftPIDController() {
@@ -274,6 +289,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * get rid PID controller
+   * 
    * @return m_rightPIDController
    */
   public PIDController getRightPIDController() {
@@ -282,6 +298,7 @@ public class Drivetrain extends SubsystemBase {
 
   /**
    * get heading
+   * 
    * @return heading
    */
   public Rotation2d getHeading() {

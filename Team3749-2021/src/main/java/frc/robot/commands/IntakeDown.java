@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
 
 public class IntakeDown extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake m_intake;
 
   /**
@@ -20,12 +20,13 @@ public class IntakeDown extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      m_intake.liftDown();
+    m_intake.liftDown();
   }
 
   // Called once the command ends or is interrupted.

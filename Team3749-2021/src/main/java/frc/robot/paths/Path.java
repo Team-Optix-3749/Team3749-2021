@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator;
 
 /**
  * Class that stores an autonomous path
+ * 
  * @author Rohan
  */
 public class Path {
@@ -21,8 +22,10 @@ public class Path {
 
   /**
    * Creates a new path object
-   * @param origin Position/Rotation of origin
-   * @param waypoints List of Points which need to be visited en route to the destination
+   * 
+   * @param origin      Position/Rotation of origin
+   * @param waypoints   List of Points which need to be visited en route to the
+   *                    destination
    * @param destination Position/Rotation of destination
    */
   public Path(Pose2d origin, List<Translation2d> waypoints, Pose2d destination) {
@@ -33,6 +36,7 @@ public class Path {
 
   /**
    * Generates trajectory for the path given the config
+   * 
    * @param config An object containing configuration settings for the trajectory
    * @return A Trajectory Object
    */

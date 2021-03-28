@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.util.Units;
 
 /**
  * An autonomous command to follow a path
+ * 
  * @author Rohan
  * @author Raadwan
  */
@@ -27,8 +28,9 @@ public class AutoNavPath extends CommandBase {
 
   /**
    * Creates an ``AutoNavPath`` object
+   * 
    * @param drivetrain The drivetrain subsystem
-   * @param path The path to follow
+   * @param path       The path to follow
    */
   public AutoNavPath(Drivetrain drivetrain, Path path) {
     m_drive = drivetrain;
