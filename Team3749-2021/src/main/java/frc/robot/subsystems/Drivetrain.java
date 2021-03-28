@@ -58,8 +58,8 @@ public class Drivetrain extends SubsystemBase {
 
   private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
   private NetworkTableEntry tx = m_table.getEntry("tx");
-  private NetworkTableEntry ty = m_table.getEntry("ty");
-  private NetworkTableEntry ta = m_table.getEntry("ta");
+  // private NetworkTableEntry ty = m_table.getEntry("ty");
+  // private NetworkTableEntry ta = m_table.getEntry("ta");
 
   private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(
       Constants.Drivetrain.kTrackWidth);
