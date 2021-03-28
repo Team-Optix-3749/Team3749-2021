@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -27,27 +26,28 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // shooter controller bindings
-    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
+    new JoystickButton(m_xboxController, Button.kA.value)
         .whenPressed(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true)
         .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
     // intake in controller bindings
-    new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new IntakeIn(m_intake), true);
-
-    // intake out controller bindings
-    new JoystickButton(m_xboxController, Button.kY.value).toggleWhenPressed(new IntakeOut(m_intake), true);
+    new JoystickButton(m_xboxController, Button.kB.value).toggleWhenPressed(new IntakeIn(m_intake), true);
 
     // intake up controller bindings
-    new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new IntakeUp(m_intake), true)
+    new JoystickButton(m_xboxController, Button.kStart.value).whenPressed(new IntakeUp(m_intake), true)
         .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // intake down controller bindings
-    new JoystickButton(m_xboxController, Button.kB.value).whenPressed(new IntakeDown(m_intake), true)
+    new JoystickButton(m_xboxController, Button.kBack.value).whenPressed(new IntakeDown(m_intake), true)
         .whenReleased(new IntakeLiftStop(m_intake), true);
 
-    // intake down controller bindings
-    new JoystickButton(m_xboxController, Button.kY.value).whenPressed(new IntakeDown(m_intake), true)
-        .whenReleased(new IntakeLiftStop(m_intake), true);
+    // belt up controller bindings
+    new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new ShooterBeltUp(m_shooter), true)
+        .whenReleased(new ShooterBeltStop(m_shooter), true);
+
+    // belt down controller bindings
+    new JoystickButton(m_xboxController, Button.kY.value).whenPressed(new ShooterBeltDown(m_shooter), true)
+        .whenReleased(new ShooterBeltStop(m_shooter), true);
   }
 
   /**
