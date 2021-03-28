@@ -70,6 +70,11 @@ public class Shooter extends SubsystemBase {
     m_belt_b.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
   }
 
+  public void beltStop() {
+    m_belt_f.set(ControlMode.PercentOutput, 0);
+    m_belt_b.set(ControlMode.PercentOutput, 0);
+  }
+
   /**
    * Send Powercells to Orbit
    */
