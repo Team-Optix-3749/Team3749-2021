@@ -11,7 +11,6 @@ import frc.robot.subsystems.*;
 
 public class RobotContainer {
   private final Drivetrain m_drive = new Drivetrain();
-  private final Elevator m_elevator = new Elevator();
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
   private final AutoNavPath m_autoCommand = new AutoNavPath(m_drive, Constants.Autonomous.AutoPath);
@@ -67,15 +66,6 @@ public class RobotContainer {
    */
   public Drivetrain getDrivetrain() {
     return m_drive;
-  }
-
-  /**
-   * A simple getter method for the Elevator system
-   * 
-   * @return m_shooter
-   */
-  public Elevator getElevator() {
-    return m_elevator;
   }
 
   /**
