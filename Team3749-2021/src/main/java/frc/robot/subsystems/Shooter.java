@@ -47,7 +47,6 @@ public class Shooter extends SubsystemBase {
    * 
    * @param velocity The desired velocity of the shooter
    */
-
   public void set(double velocity) {
     m_controller.setReference(-velocity, ControlType.kVelocity);
   }
@@ -55,21 +54,29 @@ public class Shooter extends SubsystemBase {
   /**
    * Stop Shooter
    */
-
   public void stop() {
     m_controller.setReference(0, ControlType.kDutyCycle);
   }
 
+  /**
+   * Run belt up
+   */
   public void beltUp() {
     m_belt_f.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
     m_belt_b.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
   }
 
+  /**
+   * Run belt down
+   */
   public void beltDown() {
     m_belt_f.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
     m_belt_b.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
   }
 
+  /**
+   * Stop belt
+   */
   public void beltStop() {
     m_belt_f.set(ControlMode.PercentOutput, 0);
     m_belt_b.set(ControlMode.PercentOutput, 0);
@@ -78,7 +85,6 @@ public class Shooter extends SubsystemBase {
   /**
    * Send Powercells to Orbit
    */
-
   public void sendToOrbit() {
     m_controller.setReference(Constants.Shooter.maxVoltage, ControlType.kVoltage);
   }
