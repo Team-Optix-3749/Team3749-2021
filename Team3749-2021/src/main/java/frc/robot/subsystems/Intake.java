@@ -28,13 +28,13 @@ public class Intake extends SubsystemBase {
    * Lift intake up
    */
   public void liftUp() {
-    m_lift.set(ControlMode.PercentOutput, 1);
+    m_lift.set(ControlMode.PercentOutput, 0.3);
   }
 
   /**
    * Drop intake down
    */
   public void liftDown() {
-    m_lift.set(ControlMode.PercentOutput, -1);
+    m_lift.set(ControlMode.PercentOutput, -0.25);
   }
 }
