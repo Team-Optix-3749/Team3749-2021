@@ -33,18 +33,18 @@ public class RobotContainer {
         // .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
     // intake in controller bindings
-    new JoystickButton(m_xboxController, Button.kB.value).toggleWhenPressed(new IntakeIn(m_intake), true);
+    new JoystickButton(m_xboxController, Button.kBumperRight.value).toggleWhenPressed(new IntakeIn(m_intake), true);
 
     // intake up controller bindings
-    new JoystickButton(m_xboxController, Button.kStart.value).whenPressed(new IntakeUp(m_intake), true)
+    new JoystickButton(m_xboxController, Button.kB.value).whenPressed(new IntakeUp(m_intake), true)
         .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // intake down controller bindings
-    new JoystickButton(m_xboxController, Button.kBack.value).whenPressed(new IntakeDown(m_intake), true)
+    new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new IntakeDown(m_intake), true)
         .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // belt up controller bindings
-    new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new ShooterBeltUp(m_shooter), true)
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value).whenPressed(new ShooterBeltUp(m_shooter), true)
         .whenReleased(new ShooterBeltStop(m_shooter), true);
 
     // belt down controller bindings
