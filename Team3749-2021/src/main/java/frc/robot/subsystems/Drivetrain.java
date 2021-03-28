@@ -102,6 +102,8 @@ public class Drivetrain extends SubsystemBase {
    * @param rot rotation
    */
   public void drive(double xSpeed, double rot) {
+    m_drive.setSafetyEnabled(false);
+
     setSpeeds(m_kinematics.toWheelSpeeds(new ChassisSpeeds(xSpeed, 0, rot)));
   }
 
