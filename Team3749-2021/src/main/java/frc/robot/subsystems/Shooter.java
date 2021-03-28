@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
@@ -22,6 +23,9 @@ public class Shooter extends SubsystemBase {
   private CANEncoder m_encoder;
   private CANPIDController m_controller;
 
+  private VictorSPX m_belt_f = new VictorSPX(Constants.CAN.shooter_belt_front);
+  private VictorSPX m_belt_b = new VictorSPX(Constants.CAN.shooter_belt_back);
+
   /**
    * Constructor for Shooter
    */
@@ -39,6 +43,7 @@ public class Shooter extends SubsystemBase {
 
   /**
    * Set Position of Shooter
+   * 
    * @param velocity The desired velocity of the shooter
    */
 
