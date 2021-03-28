@@ -20,13 +20,10 @@ public class RobotContainer {
 
   public RobotContainer() {
     configureButtonBindings();
-    
+
     // drivetrain controller bindings
     m_drive.setDefaultCommand(
-       new ArcadeDrive(
-         m_drive,
-         () -> m_xboxController.getY(Hand.kLeft),
-         () -> m_xboxController.getX(Hand.kRight)));
+        new ArcadeDrive(m_drive, () -> m_xboxController.getY(Hand.kLeft), () -> m_xboxController.getX(Hand.kRight)));
   }
 
   private void configureButtonBindings() {
@@ -35,9 +32,11 @@ public class RobotContainer {
         .whenPressed(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true)
         .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
-    // elevator up controller bindings
-    new JoystickButton(m_xboxController, Button.kB.value).whenPressed(new ElevatorUp(m_elevator), true)
-        .whenReleased(new ElevatorStop(m_elevator), true);
+    // intake in controller bindings
+    new JoystickButton(m_xboxController, Button.kB.value).toggleWhenPressed(new IntakeIn(m_intake), true);
+
+    // intake out controller bindings
+    new JoystickButton(m_xboxController, Button.kX.value).toggleWhenPressed(new IntakeOut(m_intake), true);
 
     // elevator down controller bindings
     new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new ElevatorDown(m_elevator), true)
