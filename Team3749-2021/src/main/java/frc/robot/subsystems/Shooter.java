@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
@@ -57,6 +58,16 @@ public class Shooter extends SubsystemBase {
 
   public void stop() {
     m_controller.setReference(0, ControlType.kDutyCycle);
+  }
+
+  public void beltUp() {
+    m_belt_f.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
+    m_belt_b.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
+  }
+
+  public void beltDown() {
+    m_belt_f.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
+    m_belt_b.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
   }
 
   /**
