@@ -39,7 +39,7 @@ public class RobotContainer {
 
     // intake up controller bindings
     new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new IntakeUp(m_intake), true)
-        .whenReleased(new IntakeStop(m_intake), true);
+        .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // intake down controller bindings
     new JoystickButton(m_xboxController, Button.kB.value).whenPressed(new IntakeDown(m_intake), true)
