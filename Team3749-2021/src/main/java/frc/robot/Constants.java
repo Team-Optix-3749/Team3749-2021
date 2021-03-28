@@ -9,8 +9,8 @@ public final class Constants {
     public static final int drive_rf = 13;
     public static final int drive_rb = 23;
     public static final int shooter_motor = 10;
-    public static final int intake_motor_f = 21;
-    public static final int intake_motor_b = 22;
+    public static final int intake_motor = 21;
+    public static final int intake_motor_lift = 22;
     public static final int elevator_motor = 24;
     public static final int control_panel_motor = 15;
 

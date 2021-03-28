@@ -1,13 +1,14 @@
 package frc.robot.subsystems;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
-
-
 public class Intake extends SubsystemBase {
-    private VictorSPX l_intake;
-    private VictorSPX r_intake;
+    private VictorSPX m_intake = new VictorSPX(Constants.CAN.intake_motor);
+    private VictorSPX m_lift = new VictorSPX(Constants.CAN.intake_motor_lift);
    
    //Start making the intake suck in powercells
     public void inward(){
