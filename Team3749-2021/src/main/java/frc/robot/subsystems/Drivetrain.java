@@ -3,12 +3,15 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import com.kauailabs.navx.frc.AHRS;
+// import com.kauailabs.navx.frc.AHRS;
 
-// import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotController;
-import edu.wpi.first.wpilibj.SPI;
+// import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
@@ -19,7 +22,7 @@ import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
-// import edu.wpi.first.wpilibj.simulation.AnalogGyroSim;
+import edu.wpi.first.wpilibj.simulation.AnalogGyroSim;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
 import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
@@ -43,7 +46,7 @@ public class Drivetrain extends SubsystemBase {
 
   public DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
-  public AHRS m_gyro = new AHRS(SPI.Port.kMXP);
+  // public AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
   private final Encoder m_leftEncoder = new Encoder(0, 1);
   private final Encoder m_rightEncoder = new Encoder(2, 3);
@@ -51,7 +54,11 @@ public class Drivetrain extends SubsystemBase {
   private final PIDController m_leftPIDController = new PIDController(8.5, 0, 0);
   private final PIDController m_rightPIDController = new PIDController(8.5, 0, 0);
 
-  // private final AnalogGyro m_gyro = new AnalogGyro(0);
+  private final AnalogGyro m_gyro = new AnalogGyro(0);
+
+  private NetworkTable kVisionTable = NetworkTableInstance.getDefault().getTable("limelight");
+
+  private NetworkTableEntry kTargetOffset = kVisionTable.getEntry("tx");
 
   private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(
       Constants.Drivetrain.kTrackWidth);
@@ -59,7 +66,7 @@ public class Drivetrain extends SubsystemBase {
 
   private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(1, 3);
 
-  // private final AnalogGyroSim m_gyroSim = new AnalogGyroSim(m_gyro);
+  private final AnalogGyroSim m_gyroSim = new AnalogGyroSim(m_gyro);
   private final EncoderSim m_leftEncoderSim = new EncoderSim(m_leftEncoder);
   private final EncoderSim m_rightEncoderSim = new EncoderSim(m_rightEncoder);
   private final Field2d m_fieldSim = new Field2d();
@@ -149,7 +156,7 @@ public class Drivetrain extends SubsystemBase {
     m_leftEncoderSim.setRate(m_drivetrainSimulator.getLeftVelocityMetersPerSecond());
     m_rightEncoderSim.setDistance(m_drivetrainSimulator.getRightPositionMeters());
     m_rightEncoderSim.setRate(m_drivetrainSimulator.getRightVelocityMetersPerSecond());
-    // m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
+    m_gyroSim.setAngle(-m_drivetrainSimulator.getHeading().getDegrees());
   }
 
   /**
@@ -239,6 +246,16 @@ public class Drivetrain extends SubsystemBase {
    */
   public void setMaxOutput(double maxOutput) {
     m_drive.setMaxOutput(maxOutput);
+  }
+
+  public void visionAlign() {
+    double output = 0;
+
+    output = kTargetOffset.getDouble(0) * Constants.Drivetrain.kVisionP;
+
+    output *= Constants.Drivetrain.kVisionLimit;
+
+    tankDrive(-output, output);
   }
 
   /**

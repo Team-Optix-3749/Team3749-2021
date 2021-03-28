@@ -33,6 +33,8 @@ public final class Constants {
     public static final double kTrackWidth = 0.381 * 2;
     public static final double kWheelRadius = 0.0508;
     public static final int kEncoderResolution = -4096;
+    public static final double kVisionP = -0.04;
+    public static final double kVisionLimit = 0.5;
   }
 
   public static class Shooter {
