@@ -33,17 +33,17 @@ public class RobotContainer {
         .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
     // intake in controller bindings
-    new JoystickButton(m_xboxController, Button.kB.value).toggleWhenPressed(new IntakeIn(m_intake), true);
+    new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new IntakeIn(m_intake), true);
 
     // intake out controller bindings
-    new JoystickButton(m_xboxController, Button.kX.value).toggleWhenPressed(new IntakeOut(m_intake), true);
+    new JoystickButton(m_xboxController, Button.kY.value).toggleWhenPressed(new IntakeOut(m_intake), true);
 
     // elevator down controller bindings
-    new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new ElevatorDown(m_elevator), true)
-        .whenReleased(new ElevatorStop(m_elevator), true);
+    new JoystickButton(m_xboxController, Button.kX.value).whenPressed(new IntakeUp(m_intake), true)
+        .whenReleased(new IntakeStop(m_intake), true);
 
     // intake up controller bindings
-    new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new IntakeUp(m_intake), true)
+    new JoystickButton(m_xboxController, Button.kB.value).whenPressed(new IntakeDown(m_intake), true)
         .whenReleased(new IntakeStop(m_intake), true);
 
     // intake down controller bindings
