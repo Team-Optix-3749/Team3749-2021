@@ -56,9 +56,10 @@ public class Drivetrain extends SubsystemBase {
 
   private final AnalogGyro m_gyro = new AnalogGyro(0);
 
-  private NetworkTable kVisionTable = NetworkTableInstance.getDefault().getTable("limelight");
-
-  private NetworkTableEntry kTargetOffset = kVisionTable.getEntry("tx");
+  private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
+  private NetworkTableEntry tx = m_table.getEntry("tx");
+  private NetworkTableEntry ty = m_table.getEntry("ty");
+  private NetworkTableEntry ta = m_table.getEntry("ta");
 
   private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(
       Constants.Drivetrain.kTrackWidth);
@@ -249,9 +250,12 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void visionAlign() {
+    double x = tx.getDouble(0.0);
+    // double y = ty.getDouble(0.0);
+    // double area = ta.getDouble(0.0);
     double output = 0;
 
-    output = kTargetOffset.getDouble(0) * Constants.Drivetrain.kVisionP;
+    output = x * Constants.Drivetrain.kVisionP;
 
     output *= Constants.Drivetrain.kVisionLimit;
 
