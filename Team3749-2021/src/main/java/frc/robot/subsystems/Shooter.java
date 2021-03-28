@@ -1,5 +1,8 @@
 package frc.robot.subsystems;
 
+// import edu.wpi.first.networktables.NetworkTable;
+// import edu.wpi.first.networktables.NetworkTableEntry;
+// import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -26,6 +29,11 @@ public class Shooter extends SubsystemBase {
 
   private VictorSPX m_belt_f = new VictorSPX(Constants.CAN.shooter_belt_front);
   private VictorSPX m_belt_b = new VictorSPX(Constants.CAN.shooter_belt_back);
+
+  // private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
+  // private NetworkTableEntry tx = m_table.getEntry("tx");
+  // private NetworkTableEntry ty = m_table.getEntry("ty");
+  // private NetworkTableEntry ta = m_table.getEntry("ta");
 
   /**
    * Constructor for Shooter
@@ -57,6 +65,18 @@ public class Shooter extends SubsystemBase {
   public void stop() {
     m_controller.setReference(0, ControlType.kDutyCycle);
   }
+
+  public void visionAdjust() {
+    // double x = tx.getDouble(0.0);
+    // double y = ty.getDouble(0.0);
+    // double area = ta.getDouble(0.0);
+    // double output = 0;
+
+    // output = x * Constants.Drivetrain.kVisionP;
+
+    // output *= Constants.Drivetrain.kVisionLimit;
+  }
+
 
   /**
    * Run belt up
