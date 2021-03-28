@@ -44,6 +44,12 @@ public final class Constants {
     public static final int maxVoltage = 12;
   }
 
+  public static class Intake {
+    public static final double kIntakeSpeed = 1.0;
+    public static final double kIntakeLiftUpSpeed = 0.3;
+    public static final double kIntakeLiftDownSpeed = -0.25;
+  }
+
   public static class Autonomous {
     public static final double kB = 2.0;
     public static final double kZeta = 0.7;

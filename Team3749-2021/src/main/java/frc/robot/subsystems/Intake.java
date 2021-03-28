@@ -14,14 +14,14 @@ public class Intake extends SubsystemBase {
    * Intake power cells in
    */
   public void intakeIn() {
-    m_intake.set(ControlMode.PercentOutput, 1);
+    m_intake.set(ControlMode.PercentOutput, Constants.Intake.kIntakeSpeed);
   }
 
   /**
    * Expel power cells out
    */
   public void intakeOut() {
-    m_intake.set(ControlMode.PercentOutput, -1);
+    m_intake.set(ControlMode.PercentOutput, -Constants.Intake.kIntakeSpeed);
   }
 
   /**
@@ -35,14 +35,14 @@ public class Intake extends SubsystemBase {
    * Lift intake up
    */
   public void liftUp() {
-    m_lift.set(ControlMode.PercentOutput, 0.3);
+    m_lift.set(ControlMode.PercentOutput, Constants.Intake.kIntakeLiftUpSpeed);
   }
 
   /**
    * Drop intake down
    */
   public void liftDown() {
-    m_lift.set(ControlMode.PercentOutput, -0.25);
+    m_lift.set(ControlMode.PercentOutput, Constants.Intake.kIntakeLiftDownSpeed);
   }
 
   /**
