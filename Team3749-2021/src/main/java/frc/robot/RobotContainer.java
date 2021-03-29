@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.XboxController.Axis;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -27,10 +26,15 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // shooter controller bindings
-    new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
-        .whenPressed(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true)
-        .whenReleased(new ShootStop(m_shooter), true);
+    // new JoystickButton(m_xboxController, Axis.kRightTrigger.value)
+    //     .whenPressed(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true)
+    //     .whenReleased(new ShootStop(m_shooter), true);
         // .whenReleased(new Shoot(m_shooter, () -> m_xboxController.getTriggerAxis(Hand.kRight)), true);
+
+    // shooter controller bindings
+    // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new ShootMax(m_shooter), true);
+    new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new ShootMax(m_shooter), true)
+        .whenReleased(new ShootStop(m_shooter), true);
 
     // intake in controller bindings
     new JoystickButton(m_xboxController, Button.kBumperRight.value).toggleWhenPressed(new IntakeIn(m_intake), true);
@@ -44,8 +48,7 @@ public class RobotContainer {
         .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // belt up controller bindings
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value).whenPressed(new ShooterBeltUp(m_shooter), true)
-        .whenReleased(new ShooterBeltStop(m_shooter), true);
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value).toggleWhenPressed(new ShooterBeltUp(m_shooter), true);
 
     // belt down controller bindings
     new JoystickButton(m_xboxController, Button.kY.value).whenPressed(new ShooterBeltDown(m_shooter), true)
