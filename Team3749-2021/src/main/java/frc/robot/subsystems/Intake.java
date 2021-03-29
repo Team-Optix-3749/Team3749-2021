@@ -10,6 +10,10 @@ public class Intake extends SubsystemBase {
   private VictorSPX m_intake = new VictorSPX(Constants.CAN.intake_motor);
   private VictorSPX m_lift = new VictorSPX(Constants.CAN.intake_motor_lift);
 
+  public Intake() {
+    m_intake.setInverted(true);
+  }
+
   /**
    * Intake power cells in
    */
