@@ -4,13 +4,13 @@ import frc.robot.paths.*;
 
 public final class Constants {
   public static class CAN {
-    public static final int drive_lf = 11;
-    public static final int drive_lb = 20;
-    public static final int drive_rf = 13;
-    public static final int drive_rb = 23;
+    public static final int drive_lf = 24;
+    public static final int drive_lb = 13;
+    public static final int drive_rf = 23;
+    public static final int drive_rb = 15;
     public static final int shooter_motor = 10;
-    public static final int shooter_belt_front = 24;
-    public static final int shooter_belt_back = 15;
+    public static final int shooter_belt_front = 11;
+    public static final int shooter_belt_back = 20;
     public static final int intake_motor = 21;
     public static final int intake_motor_lift = 22;
   }
@@ -28,7 +28,7 @@ public final class Constants {
 
   public static class Drivetrain {
     public static final double kDriveSpeed = 1.0;
-    public static final double kMaxSpeed = 3.0;
+    public static final double kMaxSpeed = 1.0;
     public static final double kMaxAngularSpeed = Math.PI;
     public static final double kTrackWidth = 0.381 * 2;
     public static final double kWheelRadius = 0.0508;
@@ -48,8 +48,8 @@ public final class Constants {
 
   public static class Intake {
     public static final double kIntakeSpeed = 1.0;
-    public static final double kIntakeLiftUpSpeed = 0.3;
-    public static final double kIntakeLiftDownSpeed = -0.25;
+    public static final double kIntakeLiftUpSpeed = 1.0;
+    public static final double kIntakeLiftDownSpeed = -1.0;
   }
 
   public static class Autonomous {
