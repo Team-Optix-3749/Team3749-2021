@@ -36,12 +36,12 @@ import frc.robot.Constants;
 
 @SuppressWarnings("PMD.TooManyFields")
 public class Drivetrain extends SubsystemBase {
-  private WPI_TalonSRX m_leftFrontMotor = new WPI_TalonSRX(Constants.CAN.drive_lf);
-  private WPI_VictorSPX m_leftBackMotor = new WPI_VictorSPX(Constants.CAN.drive_lb);
+  private WPI_VictorSPX m_leftFrontMotor = new WPI_VictorSPX(Constants.CAN.drive_lf);
+  private WPI_TalonSRX m_leftBackMotor = new WPI_TalonSRX(Constants.CAN.drive_lb);
   public SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(m_leftFrontMotor, m_leftBackMotor);
 
-  private WPI_TalonSRX m_rightFrontMotor = new WPI_TalonSRX(Constants.CAN.drive_rf);
-  private WPI_VictorSPX m_rightBackMotor = new WPI_VictorSPX(Constants.CAN.drive_rb);
+  private WPI_VictorSPX m_rightFrontMotor = new WPI_VictorSPX(Constants.CAN.drive_rf);
+  private WPI_TalonSRX m_rightBackMotor = new WPI_TalonSRX(Constants.CAN.drive_rb);
   public SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(m_rightFrontMotor, m_rightBackMotor);
 
   public DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
@@ -78,6 +78,9 @@ public class Drivetrain extends SubsystemBase {
 
   public Drivetrain() {
     m_gyro.reset();
+
+    m_leftMotors.setInverted(true);
+    m_rightMotors.setInverted(true);
 
     m_leftEncoder
         .setDistancePerPulse(2 * Math.PI * Constants.Drivetrain.kWheelRadius / Constants.Drivetrain.kEncoderResolution);
