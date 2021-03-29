@@ -8,6 +8,7 @@ import frc.robot.Constants;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.CANSparkMax;
@@ -27,7 +28,7 @@ public class Shooter extends SubsystemBase {
   private CANEncoder m_encoder;
   private CANPIDController m_controller;
 
-  private VictorSPX m_belt_f = new VictorSPX(Constants.CAN.shooter_belt_front);
+  private WPI_TalonSRX m_belt_f = new WPI_TalonSRX(Constants.CAN.shooter_belt_front);
   private VictorSPX m_belt_b = new VictorSPX(Constants.CAN.shooter_belt_back);
 
   // private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -41,13 +42,16 @@ public class Shooter extends SubsystemBase {
   public Shooter() {
     m_shooterMotor = new CANSparkMax(Constants.CAN.shooter_motor, MotorType.kBrushless);
     m_shooterMotor.setIdleMode(IdleMode.kCoast);
+    m_shooterMotor.setInverted(true);
     m_encoder = m_shooterMotor.getEncoder();
     m_controller = m_shooterMotor.getPIDController();
     m_controller.setFeedbackDevice(m_encoder);
-    m_controller.setP(Constants.Shooter.kP);
-    m_controller.setI(Constants.Shooter.kI);
-    m_controller.setD(Constants.Shooter.kD);
+    // m_controller.setP(Constants.Shooter.kP);
+    // m_controller.setI(Constants.Shooter.kI);
+    // m_controller.setD(Constants.Shooter.kD);
     stop();
+
+    m_belt_b.setInverted(true);
   }
 
   /**
@@ -83,7 +87,7 @@ public class Shooter extends SubsystemBase {
    */
   public void beltUp() {
     m_belt_f.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
-    m_belt_b.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
+    m_belt_b.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
   }
 
   /**
@@ -91,7 +95,7 @@ public class Shooter extends SubsystemBase {
    */
   public void beltDown() {
     m_belt_f.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
-    m_belt_b.set(ControlMode.PercentOutput, Constants.Shooter.kBeltSpeed);
+    m_belt_b.set(ControlMode.PercentOutput, -Constants.Shooter.kBeltSpeed);
   }
 
   /**
@@ -106,6 +110,7 @@ public class Shooter extends SubsystemBase {
    * Send Powercells to Orbit
    */
   public void sendToOrbit() {
-    m_controller.setReference(Constants.Shooter.maxVoltage, ControlType.kVoltage);
+    // m_controller.setReference(Constants.Shooter.maxVoltage, ControlType.kVoltage);
+    m_controller.setReference(10, ControlType.kVoltage);
   }
 }
