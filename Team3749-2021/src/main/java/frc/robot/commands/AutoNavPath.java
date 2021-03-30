@@ -97,7 +97,7 @@ public class AutoNavPath extends CommandBase {
     double rightOutput = rightFeedforward
         + m_drive.getRightPIDController().calculate(speeds.rightMetersPerSecond, rightSpeedSetpoint);
 
-    m_drive.setOutputVolts(leftOutput, rightOutput);
+    m_drive.setOutputVolts(leftOutput, -rightOutput);
     m_prevSpeeds = targetWheelSpeeds;
     m_prevTime = curTime;
   }
