@@ -12,6 +12,16 @@ import edu.wpi.first.wpilibj.geometry.Translation2d;
  */
 
 public class Paths {
+  public static Path test = new Path(
+    new Pose2d(0, 0, new Rotation2d(0)),
+    List.of(
+      new Translation2d(2, 1),
+      new Translation2d(3, 5),
+      new Translation2d(4, 1)
+    ),
+    new Pose2d(5, 1, new Rotation2d(-Math.PI))
+  );
+
   public static Path ANSlalomPath = new Path(
     new Pose2d(1, 1, new Rotation2d(0)),
     List.of(
