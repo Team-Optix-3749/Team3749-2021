@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -76,6 +77,8 @@ public class Drivetrain extends SubsystemBase {
   private final DifferentialDrivetrainSim m_drivetrainSimulator = new DifferentialDrivetrainSim(m_drivetrainSystem,
       DCMotor.getCIM(2), 8, Constants.Drivetrain.kTrackWidth, Constants.Drivetrain.kWheelRadius, null);
 
+  private final Timer m_timer = new Timer();
+
   public Drivetrain() {
     m_gyro.reset();
 
@@ -118,6 +121,25 @@ public class Drivetrain extends SubsystemBase {
     m_drive.setSafetyEnabled(false);
 
     setSpeeds(m_kinematics.toWheelSpeeds(new ChassisSpeeds(xSpeed, 0, rot)));
+  }
+
+  /**
+   * Drive robot with timer
+   * 
+   * @param leftSpeed  left side drive speed
+   * @param rightSpeed right side drive speed
+   * @param time      time in seconds
+   */
+  public void go(double leftSpeed, double rightSpeed, double time) {
+    m_drive.setSafetyEnabled(false);
+    m_timer.reset();
+    m_timer.start();
+
+    if (m_timer.get() < time) {
+      tankDrive(leftSpeed, rightSpeed);
+    } else {
+      stopMotors();
+    } 
   }
 
   /**
