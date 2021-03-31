@@ -135,10 +135,8 @@ public class Drivetrain extends SubsystemBase {
     m_timer.reset();
     m_timer.start();
 
-    if (m_timer.get() < time)
+    while (m_timer.get() < time)
       tankDrive(leftSpeed, rightSpeed);
-    else
-      stopMotors();
   }
 
   /**
