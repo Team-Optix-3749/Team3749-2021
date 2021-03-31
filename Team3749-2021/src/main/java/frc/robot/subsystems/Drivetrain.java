@@ -128,18 +128,17 @@ public class Drivetrain extends SubsystemBase {
    * 
    * @param leftSpeed  left side drive speed
    * @param rightSpeed right side drive speed
-   * @param time      time in seconds
+   * @param time       time in seconds
    */
   public void go(double leftSpeed, double rightSpeed, double time) {
     m_drive.setSafetyEnabled(false);
     m_timer.reset();
     m_timer.start();
 
-    if (m_timer.get() < time) {
+    if (m_timer.get() < time)
       tankDrive(leftSpeed, rightSpeed);
-    } else {
+    else
       stopMotors();
-    } 
   }
 
   /**
