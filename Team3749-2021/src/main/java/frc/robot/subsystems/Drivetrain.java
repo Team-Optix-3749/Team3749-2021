@@ -130,7 +130,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rightSpeed right side drive speed
    * @param time       time in seconds
    */
-  public void go(double leftSpeed, double rightSpeed, double time) {
+  public void auto(double leftSpeed, double rightSpeed, double time) {
     m_drive.setSafetyEnabled(false);
     m_timer.reset();
     m_timer.start();
