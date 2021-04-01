@@ -36,6 +36,7 @@ public final class Constants {
     public static final int kEncoderResolution = -2048;
     public static final double kVisionP = -0.04;
     public static final double kVisionLimit = 0.5;
+    public static final double kTurnP = 0.5;
   }
 
   public static class Shooter {
