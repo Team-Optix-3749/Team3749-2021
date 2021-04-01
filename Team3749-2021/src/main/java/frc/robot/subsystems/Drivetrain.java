@@ -209,7 +209,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rightSpeed speed of right side
    */
   public void tankDrive(double leftSpeed, double rightSpeed) {
-    m_drive.tankDrive(leftSpeed * Constants.Drivetrain.kDriveSpeed, rightSpeed);
+    m_drive.tankDrive(leftSpeed, rightSpeed);
   }
 
   /**
