@@ -148,10 +148,10 @@ public class Drivetrain extends SubsystemBase {
     final double error = angle - m_gyro.getAngle();
     double rot = 0;
 
-    if (error > 5.0)
+    while (error > 5.0) {
       rot = error * Constants.Drivetrain.kTurnP;
-
-    arcadeDrive(0, rot);
+      arcadeDrive(0, rot);
+    }
   }
 
   /**
