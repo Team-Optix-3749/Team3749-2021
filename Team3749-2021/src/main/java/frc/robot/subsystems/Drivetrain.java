@@ -199,7 +199,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rot rotation along z-axis
    */
   public void arcadeDrive(double fwd, double rot) {
-    m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot, true);
+    m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot * (Constants.Drivetrain.kDriveSpeed - 0.1), true);
   }
 
   /**
@@ -209,7 +209,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rightSpeed speed of right side
    */
   public void tankDrive(double leftSpeed, double rightSpeed) {
-    m_drive.tankDrive(-leftSpeed, -rightSpeed);
+    m_drive.tankDrive(leftSpeed * Constants.Drivetrain.kDriveSpeed, rightSpeed);
   }
 
   /**
