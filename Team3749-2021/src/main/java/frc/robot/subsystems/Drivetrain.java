@@ -140,6 +140,21 @@ public class Drivetrain extends SubsystemBase {
   }
 
   /**
+   * turn to specific angle
+   * 
+   * @param angle angle to turn to
+   */
+  public void turnToAngle(double angle) {
+    final double error = angle - m_gyro.getAngle();
+    double rot = 0;
+
+    if (error > 5)
+      rot = error * Constants.Drivetrain.kTurnP;
+
+    arcadeDrive(0, rot);
+  }
+
+  /**
    * update drivetrain odometry
    */
   public void updateOdometry() {
