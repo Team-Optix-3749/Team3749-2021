@@ -28,6 +28,7 @@ public final class Constants {
 
   public static class Drivetrain {
     public static final double kDriveSpeed = 0.7;
+    public static final double kTurnSpeed = 0.5;
     public static final double kMaxSpeed = 0.8;
     public static final double kMaxAngularSpeed = Math.PI;
     public static final double kTrackWidth = 0.711;
