@@ -199,7 +199,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rot rotation along z-axis
    */
   public void arcadeDrive(double fwd, double rot) {
-    m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot * (Constants.Drivetrain.kDriveSpeed - 0.1), true);
+    m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot * Constants.Drivetrain.kTurnSpeed, true);
   }
 
   /**
