@@ -22,10 +22,34 @@ public class AutoSlalomPath extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drive.auto(1.0, 1.0, 1.0);
-    m_drive.auto(0.5, 1.0, 0.5);
-    m_drive.auto(1.0, 0.5, 0.5);
-    m_drive.auto(1.0, 1.0, 1.0);
+    // first turn
+    m_drive.auto(1.0, 1.0, 0.2); // forward
+    m_drive.auto(0.5, 1.0, 0.7); // left
+    m_drive.auto(1.0, 1.0, 0.2); // forward
+    m_drive.auto(1.0, 0.5, 0.6); // right
+
+    // first straight
+    m_drive.auto(1.0, 1.0, 0.9); // forward
+
+    // roundabout
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(0.7, 1.0, 0.4); // left
+    m_drive.auto(0.5, 0.5, 0.4); // forward
+    m_drive.auto(0.7, 1.0, 0.4); // left
+    m_drive.auto(0.5, 0.5, 0.4); // forward
+    m_drive.auto(0.7, 1.0, 0.4); // left
+    m_drive.auto(0.5, 0.5, 0.4); // forward
+    m_drive.auto(0.7, 1.0, 0.4); // left
+    m_drive.auto(0.5, 0.5, 0.4); // forward
+
+    // second straight
+    m_drive.auto(1.0, 1.0, 0.9); // forward
+
+    // second turn
+    m_drive.auto(0.5, 1.0, 0.7); // right
+    m_drive.auto(1.0, 1.0, 0.2); // forward
+    m_drive.auto(0.5, 1.0, 0.7); // left
+    m_drive.auto(1.0, 1.0, 0.3); // forward
   }
 
   // Called every time the scheduler runs while the command is scheduled.
