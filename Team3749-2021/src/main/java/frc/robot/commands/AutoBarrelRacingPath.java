@@ -22,10 +22,39 @@ public class AutoBarrelRacingPath extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drive.auto(1.0, 1.0, 1.0);
-    m_drive.auto(0.5, 1.0, 0.5);
-    m_drive.auto(1.0, 0.5, 0.5);
-    m_drive.auto(1.0, 1.0, 1.0);
+    // get to first loop
+    m_drive.auto(1.0, 1.0, 1.7); // forward
+
+    // first loop
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+
+    // get to second loop
+    m_drive.auto(1.0, 1.0, 1.7); // forward
+
+    // second loop
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+
+    // get to third loop
+    m_drive.auto(1.0, 1.0, 1.7); // forward
+
+    // third loop
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+    m_drive.auto(1.0, 0.5, 0.6); // right
+    m_drive.auto(1.0, 1.0, 0.5); // forward
+
+    // get to finish
+    m_drive.auto(1.0, 1.0, 10.0); // forward
   }
 
   // Called every time the scheduler runs while the command is scheduled.
