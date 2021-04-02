@@ -140,6 +140,23 @@ public class Drivetrain extends SubsystemBase {
   }
 
   /**
+   * Drive robot with timer
+   * 
+   * @param fwd  left side drive speed
+   * @param rot right side drive speed
+   * @param time       time in seconds
+   */
+  public void autoArcade(double fwd, double rot, double time) {
+    m_drive.setSafetyEnabled(false);
+    m_timer.reset();
+    m_timer.start();
+
+    while (m_timer.get() < time)
+      arcadeDrive(fwd, rot);
+  }
+
+
+  /**
    * turn to specific angle
    * 
    * @param angle angle to turn to
@@ -150,7 +167,7 @@ public class Drivetrain extends SubsystemBase {
     double error = angle - m_gyro.getAngle();
     double rot = 0;
 
-    while (error > 5.0) {
+    while (error > 5.0 || error < -5.0) {
       error = angle - m_gyro.getAngle();
       rot = error * Constants.Drivetrain.kTurnP;
       arcadeDrive(0, rot);
