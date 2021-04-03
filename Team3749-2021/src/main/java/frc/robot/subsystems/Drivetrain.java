@@ -90,6 +90,8 @@ public class Drivetrain extends SubsystemBase {
     m_rightEncoder
         .setDistancePerPulse(2 * Math.PI * Constants.Drivetrain.kWheelRadius / Constants.Drivetrain.kEncoderResolution);
 
+    m_rightEncoder.setReverseDirection(true);
+
     m_leftEncoder.reset();
     m_rightEncoder.reset();
 
@@ -130,14 +132,30 @@ public class Drivetrain extends SubsystemBase {
    * @param rightSpeed right side drive speed
    * @param time       time in seconds
    */
-  public void auto(double leftSpeed, double rightSpeed, double time) {
+  public void auto(double leftSpeed, double rightSpeed, double distance) {
     m_drive.setSafetyEnabled(false);
-    m_timer.reset();
-    m_timer.start();
+    m_leftEncoder.reset();
+    m_rightEncoder.reset();
 
-    while (m_timer.get() < time)
+    while (m_leftEncoder.getDistance() < distance)
       tankDrive(leftSpeed, rightSpeed);
   }
+
+  // /**
+  //  * Drive robot with timer
+  //  * 
+  //  * @param leftSpeed  left side drive speed
+  //  * @param rightSpeed right side drive speed
+  //  * @param time       time in seconds
+  //  */
+  // public void auto(double leftSpeed, double rightSpeed, double time) {
+  //   m_drive.setSafetyEnabled(false);
+  //   m_timer.reset();
+  //   m_timer.start();
+
+  //   while (m_timer.get() < time)
+  //     tankDrive(leftSpeed, rightSpeed);
+  // }
 
   /**
    * Drive robot with timer
@@ -152,7 +170,7 @@ public class Drivetrain extends SubsystemBase {
     m_timer.start();
 
     while (m_timer.get() < time)
-      arcadeDrive(fwd, rot);
+      arcadeDrive(-fwd, rot);
   }
 
 
@@ -234,6 +252,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rot rotation along z-axis
    */
   public void arcadeDrive(double fwd, double rot) {
+    System.out.println(m_gyro.getAngle());
     m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot * Constants.Drivetrain.kTurnSpeed, true);
   }
 
