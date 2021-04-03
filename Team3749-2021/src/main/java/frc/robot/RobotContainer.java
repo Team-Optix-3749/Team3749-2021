@@ -13,7 +13,7 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
   // private final AutoNavPath m_autoCommand = new AutoNavPath(m_drive, Constants.Autonomous.AutoPath);
-  private final AutoSlalomPath m_autoCommand = new AutoSlalomPath(m_drive);
+  private final AutoTest m_autoCommand = new AutoTest(m_drive);
 
   public XboxController m_xboxController = new XboxController(0);
 
