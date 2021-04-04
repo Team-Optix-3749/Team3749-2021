@@ -24,12 +24,13 @@ public class Paths {
     new Pose2d(0, 0, new Rotation2d(0)),
     List.of(
       new Translation2d(0.7, 0.6),
-      new Translation2d(1.0, 0.8),
-      new Translation2d(3.6, 0.8),
+      new Translation2d(1.0, 0.9),
+      new Translation2d(3.6, 0.9),
       new Translation2d(3.9, 0.6),
-      new Translation2d(4.5, 0.2)
+      new Translation2d(4.5, 0.2),
+      new Translation2d(5.0, 0.2)
     ),
-    new Pose2d(5.0, 0.2, new Rotation2d(0))
+    new Pose2d(5.8, 0.6, new Rotation2d(0))
   );
 
   public static Path ANBarrelRacingPath = new Path(
