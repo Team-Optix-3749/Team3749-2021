@@ -15,10 +15,12 @@ public class Paths {
   public static Path test = new Path(
     new Pose2d(0, 0, new Rotation2d(0)),
     List.of(
-      new Translation2d(0.5, 0.5),
-      new Translation2d(1, -0.5)
+      new Translation2d(5, 0)
+      // new Translation2d(1.2, 1.4),
+      // new Translation2d(5, 1)
     ),
-    new Pose2d(2, 0.5, new Rotation2d(-Math.PI))
+    // new Pose2d(5, 0, new Rotation2d(0))
+    new Pose2d(7.8, 0, new Rotation2d(0))
   );
 
   public static Path ANSlalomPath = new Path(
