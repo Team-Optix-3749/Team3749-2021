@@ -49,8 +49,8 @@ public class Drivetrain extends SubsystemBase {
 
   public AHRS m_gyro = new AHRS(SPI.Port.kMXP);
 
-  private final Encoder m_leftEncoder = new Encoder(0, 1);
-  private final Encoder m_rightEncoder = new Encoder(2, 3);
+  public final Encoder m_leftEncoder = new Encoder(0, 1);
+  public final Encoder m_rightEncoder = new Encoder(2, 3);
 
   private final PIDController m_leftPIDController = new PIDController(8.5, 0, 0);
   private final PIDController m_rightPIDController = new PIDController(8.5, 0, 0);
@@ -137,7 +137,7 @@ public class Drivetrain extends SubsystemBase {
     m_leftEncoder.reset();
     m_rightEncoder.reset();
 
-    while (m_leftEncoder.getDistance() < distance)
+    while (m_leftEncoder.getDistance() + m_rightEncoder.getDistance() != distance)
       tankDrive(leftSpeed, rightSpeed);
   }
 
@@ -252,7 +252,6 @@ public class Drivetrain extends SubsystemBase {
    * @param rot rotation along z-axis
    */
   public void arcadeDrive(double fwd, double rot) {
-    System.out.println(m_gyro.getAngle());
     m_drive.arcadeDrive(-fwd * Constants.Drivetrain.kDriveSpeed, rot * Constants.Drivetrain.kTurnSpeed, true);
   }
 
