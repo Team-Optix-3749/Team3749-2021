@@ -16,27 +16,17 @@ public class Paths {
     new Pose2d(0, 0, new Rotation2d(0)),
     List.of(
       new Translation2d(5, 0)
-      // new Translation2d(1.2, 1.4),
-      // new Translation2d(5, 1)
     ),
-    // new Pose2d(5, 0, new Rotation2d(0))
     new Pose2d(7.8, 0, new Rotation2d(0))
   );
 
   public static Path ANSlalomPath = new Path(
-    new Pose2d(1, 1, new Rotation2d(0)),
+    new Pose2d(0, 0, new Rotation2d(0)),
     List.of(
-      new Translation2d(5, 3.5),
-      new Translation2d(11, 3.5),
-      new Translation2d(13, 2),
-      new Translation2d(14.5, 2.5),
-      new Translation2d(14.5, 3.5),
-      new Translation2d(13, 3.5),
-      new Translation2d(11, 2),
-      new Translation2d(5, 2),
-      new Translation2d(3, 3.5)
+      new Translation2d(1.2, 1.4),
+      new Translation2d(5, 1)
     ),
-    new Pose2d(1, 4, new Rotation2d(Math.PI))
+    new Pose2d(5, 0, new Rotation2d(0))
   );
 
   public static Path ANBarrelRacingPath = new Path(
