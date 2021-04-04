@@ -22,8 +22,8 @@ public class AutoSlalomPath extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // first turn
-    m_drive.auto(1.0, 1.0, 0.2); // forward
+    m_drive.auto(1.0, 1.0, 0.8); // forward
+    m_drive.auto(-0.7, 0.7, 0.7); // left
   }
 
   // Called every time the scheduler runs while the command is scheduled.
