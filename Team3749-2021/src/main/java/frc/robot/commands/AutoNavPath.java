@@ -61,6 +61,8 @@ public class AutoNavPath extends CommandBase {
     m_timer.start();
     m_drive.getLeftPIDController().reset();
     m_drive.getRightPIDController().reset();
+    m_drive.m_leftEncoder.reset();
+    m_drive.m_rightEncoder.reset();
   }
 
   /**
