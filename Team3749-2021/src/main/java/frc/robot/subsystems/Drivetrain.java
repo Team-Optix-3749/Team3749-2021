@@ -353,7 +353,7 @@ public class Drivetrain extends SubsystemBase {
    * @return return differential drive speeds
    */
   public DifferentialDriveWheelSpeeds getSpeeds() {
-    return new DifferentialDriveWheelSpeeds(m_leftEncoderSim.getRate(), m_rightEncoderSim.getRate());
+    return new DifferentialDriveWheelSpeeds(m_leftEncoder.getRate(), m_rightEncoder.getRate());
   }
 
   /**
