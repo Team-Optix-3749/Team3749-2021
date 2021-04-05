@@ -3,14 +3,22 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.paths.*;
+// import frc.robot.paths.*;
+
+import java.io.IOException;
+// import java.nio.file.Files;
+import java.nio.file.Path;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.controller.RamseteController;
 import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.trajectory.TrajectoryConfig;
+import edu.wpi.first.wpilibj.trajectory.TrajectoryUtil;
 import edu.wpi.first.wpilibj.util.Units;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Filesystem;
 
 /**
  * An autonomous command to follow a path
@@ -32,13 +40,23 @@ public class AutoNavPath extends CommandBase {
    * @param drivetrain The drivetrain subsystem
    * @param path       The path to follow
    */
-  public AutoNavPath(Drivetrain drivetrain, Path path) {
+  public AutoNavPath(Drivetrain drivetrain) {
     m_drive = drivetrain;
+
+    String trajectoryJSON = "paths/output/slalom.wpilib.json";
 
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
 
-    m_trajectory = path.getTrajectory(config);
+    // m_trajectory = path.getTrajectory(config);
+
+    try {
+      Path m_trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
+      m_trajectory = TrajectoryUtil.fromPathweaverJson(m_trajectoryPath);
+    } catch (IOException ex) {
+      DriverStation.reportError("Unable to open trajectory: " + trajectoryJSON, ex.getStackTrace());
+      System.out.println("Unable to open trajectory");
+    }
 
     m_drive.resetOdometry(m_trajectory.getInitialPose());
 
@@ -52,6 +70,7 @@ public class AutoNavPath extends CommandBase {
    */
   @Override
   public void initialize() {
+    m_drive.resetOdometry(m_trajectory.getInitialPose());
     m_prevTime = -1;
     var initialState = m_trajectory.sample(0);
     var angularVelocity = initialState.curvatureRadPerMeter * initialState.velocityMetersPerSecond;
