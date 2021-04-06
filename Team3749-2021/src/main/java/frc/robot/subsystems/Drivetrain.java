@@ -52,8 +52,8 @@ public class Drivetrain extends SubsystemBase {
   public final Encoder m_leftEncoder = new Encoder(0, 1);
   public final Encoder m_rightEncoder = new Encoder(2, 3);
 
-  private final PIDController m_leftPIDController = new PIDController(8.5, 0, 0);
-  private final PIDController m_rightPIDController = new PIDController(8.5, 0, 0);
+  private final PIDController m_leftPIDController = new PIDController(1.0, 0.5, 0);
+  private final PIDController m_rightPIDController = new PIDController(1.0, 0.5, 0);
 
   // private final AnalogGyro m_gyro = new AnalogGyro(0);
 
@@ -142,27 +142,27 @@ public class Drivetrain extends SubsystemBase {
   }
 
   // /**
-  //  * Drive robot with timer
-  //  * 
-  //  * @param leftSpeed  left side drive speed
-  //  * @param rightSpeed right side drive speed
-  //  * @param time       time in seconds
-  //  */
+  // * Drive robot with timer
+  // *
+  // * @param leftSpeed left side drive speed
+  // * @param rightSpeed right side drive speed
+  // * @param time time in seconds
+  // */
   // public void auto(double leftSpeed, double rightSpeed, double time) {
-  //   m_drive.setSafetyEnabled(false);
-  //   m_timer.reset();
-  //   m_timer.start();
+  // m_drive.setSafetyEnabled(false);
+  // m_timer.reset();
+  // m_timer.start();
 
-  //   while (m_timer.get() < time)
-  //     tankDrive(leftSpeed, rightSpeed);
+  // while (m_timer.get() < time)
+  // tankDrive(leftSpeed, rightSpeed);
   // }
 
   /**
    * Drive robot with timer
    * 
    * @param fwd  left side drive speed
-   * @param rot right side drive speed
-   * @param time       time in seconds
+   * @param rot  right side drive speed
+   * @param time time in seconds
    */
   public void autoArcade(double fwd, double rot, double time) {
     m_drive.setSafetyEnabled(false);
@@ -172,7 +172,6 @@ public class Drivetrain extends SubsystemBase {
     while (m_timer.get() < time)
       arcadeDrive(-fwd, rot);
   }
-
 
   /**
    * turn to specific angle
