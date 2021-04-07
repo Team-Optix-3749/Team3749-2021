@@ -30,7 +30,7 @@ public final class Constants {
     // public static final double kDriveSpeed = 0.8; // GD Lightspeed Circuit Path
     // public static final double kTurnSpeed = 0.7; // GD Lightspeed Circuit Path
     public static final double kDriveSpeed = 1.0;
-    public static final double kTurnSpeed = 0.9;
+    public static final double kTurnSpeed = 1.0;
     public static final double kMaxSpeed = 0.8;
     public static final double kMaxAngularSpeed = Math.PI;
     public static final double kTrackWidth = 0.711;
@@ -46,7 +46,7 @@ public final class Constants {
     public static final double kI = 1.0;
     public static final double kD = 1.0;
     public static final int maxRPM = 5500;
-    public static final int maxVoltage = 12;
+    public static final int maxVoltage = 10;
     public static final double kBeltSpeed = 1.0;
   }
 
