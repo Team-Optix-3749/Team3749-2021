@@ -14,7 +14,8 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   // private final AutoBarrelRacingPath m_autoCommand = new AutoBarrelRacingPath(m_drive);
   // private final AutoSlalomPath m_autoCommand = new AutoSlalomPath(m_drive);
-  private final AutoBouncePath m_autoCommand = new AutoBouncePath(m_drive);
+  // private final AutoBouncePath m_autoCommand = new AutoBouncePath(m_drive);
+  private final AutoSearchPathA m_autoCommand = new AutoSearchPathA(m_drive, m_intake);
 
   public XboxController m_xboxController = new XboxController(0);
 
@@ -38,8 +39,14 @@ public class RobotContainer {
     // shooter controller bindings
     // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
     // ShootMax(m_shooter), true);
-    new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new ShootMax(m_shooter), true)
-        .whenReleased(new ShootStop(m_shooter), true);
+    // new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new
+    // ShootMax(m_shooter), true)
+    // .whenReleased(new ShootStop(m_shooter), true);
+
+    new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new ShootMax(m_shooter), true);
+
+    new JoystickButton(m_xboxController, Button.kBumperLeft.value).whenPressed(new ShooterBeltUp(m_shooter), true)
+        .whenReleased(new ShooterBeltStop(m_shooter), true);
 
     // intake in controller bindings
     new JoystickButton(m_xboxController, Button.kBumperRight.value).toggleWhenPressed(new IntakeIn(m_intake), true);
@@ -53,8 +60,9 @@ public class RobotContainer {
         .whenReleased(new IntakeLiftStop(m_intake), true);
 
     // belt up controller bindings
-    new JoystickButton(m_xboxController, Button.kBumperLeft.value).toggleWhenPressed(new ShooterBeltUp(m_shooter),
-        true);
+    // new JoystickButton(m_xboxController,
+    // Button.kBumperLeft.value).toggleWhenPressed(new ShooterBeltUp(m_shooter),
+    // true);
 
     // belt down controller bindings
     new JoystickButton(m_xboxController, Button.kY.value).whenPressed(new ShooterBeltDown(m_shooter), true)
