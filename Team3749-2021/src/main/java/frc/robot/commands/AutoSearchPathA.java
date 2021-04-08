@@ -138,6 +138,7 @@ public class AutoSearchPathA extends CommandBase {
   public void end(boolean interrupted) {
     m_drive.setOutputVolts(0, 0);
     m_intake.intakeStop();
+    m_intake.liftStop();
     m_timer.stop();
   }
 
