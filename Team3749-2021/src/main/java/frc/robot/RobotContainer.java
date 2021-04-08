@@ -15,7 +15,8 @@ public class RobotContainer {
   // private final AutoBarrelRacingPath m_autoCommand = new AutoBarrelRacingPath(m_drive);
   // private final AutoSlalomPath m_autoCommand = new AutoSlalomPath(m_drive);
   // private final AutoBouncePath m_autoCommand = new AutoBouncePath(m_drive);
-  private final AutoSearchPathA m_autoCommand = new AutoSearchPathA(m_drive, m_intake);
+  // private final AutoSearchPathA m_autoCommand = new AutoSearchPathA(m_drive, m_intake);
+  private final AutoSearchPathB m_autoCommand = new AutoSearchPathB(m_drive, m_intake);
 
   public XboxController m_xboxController = new XboxController(0);
 
