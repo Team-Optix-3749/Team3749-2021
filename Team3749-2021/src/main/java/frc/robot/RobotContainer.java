@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -13,10 +14,17 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final Shooter m_shooter = new Shooter();
   // private final AutoBarrelRacingPath m_autoCommand = new AutoBarrelRacingPath(m_drive);
-  // private final AutoSlalomPath m_autoCommand = new AutoSlalomPath(m_drive);
   // private final AutoBouncePath m_autoCommand = new AutoBouncePath(m_drive);
   // private final AutoSearchPathA m_autoCommand = new AutoSearchPathA(m_drive, m_intake);
-  private final AutoSearchPathB m_autoCommand = new AutoSearchPathB(m_drive, m_intake);
+  // private final AutoSearchPathB m_autoCommand = new AutoSearchPathB(m_drive, m_intake);
+  // private final AutoBouncePath1 m_autoBouncePath1 = new AutoBouncePath1(m_drive);
+  // private final AutoBouncePath2 m_autoBouncePath2 = new AutoBouncePath2(m_drive);
+  // private final AutoBouncePath3 m_autoBouncePath3 = new AutoBouncePath3(m_drive);
+  // private final AutoBouncePath4 m_autoBouncePath4 = new AutoBouncePath4(m_drive);
+  // private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoBouncePath1, m_autoBouncePath2, m_autoBouncePath3, m_autoBouncePath4);
+  private final AutoSlalomPath1 m_autoSlalomPath1 = new AutoSlalomPath1(m_drive);
+  private final AutoSlalomPath2 m_autoSlalomPath2 = new AutoSlalomPath2(m_drive);
+  private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoSlalomPath1, m_autoSlalomPath2);
 
   public XboxController m_xboxController = new XboxController(0);
 
