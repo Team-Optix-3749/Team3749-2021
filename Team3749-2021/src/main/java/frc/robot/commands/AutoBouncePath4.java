@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj.Filesystem;
  * @author Rohan
  * @author Raadwan
  */
-public class AutoBouncePath extends CommandBase {
+public class AutoBouncePath4 extends CommandBase {
   private final Timer m_timer = new Timer();
   private final Drivetrain m_drive;
   private Trajectory m_trajectory;
@@ -40,7 +40,7 @@ public class AutoBouncePath extends CommandBase {
    * @param drivetrain The drivetrain subsystem
    * @param path       The path to follow
    */
-  public AutoBouncePath(Drivetrain drivetrain) {
+  public AutoBouncePath4(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
     String trajectoryJSON = "paths/output/bounce.wpilib.json";
