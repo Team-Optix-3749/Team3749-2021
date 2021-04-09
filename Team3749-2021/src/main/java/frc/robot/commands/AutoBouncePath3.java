@@ -43,10 +43,11 @@ public class AutoBouncePath3 extends CommandBase {
   public AutoBouncePath3(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
-    String trajectoryJSON = "paths/output/bounce.wpilib.json";
+    String trajectoryJSON = "paths/output/bounce3.wpilib.json";
 
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
+    config.setReversed(true);
 
     // m_trajectory = path.getTrajectory(config);
 
@@ -58,7 +59,7 @@ public class AutoBouncePath3 extends CommandBase {
       System.out.println("Unable to open trajectory");
     }
 
-    m_drive.resetOdometry(m_trajectory.getInitialPose());
+    // m_drive.resetOdometry(m_trajectory.getInitialPose());
 
     m_follower = new RamseteController(Constants.Autonomous.kB, Constants.Autonomous.kZeta);
 

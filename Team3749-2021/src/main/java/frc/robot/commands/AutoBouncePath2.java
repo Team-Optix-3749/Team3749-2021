@@ -43,10 +43,11 @@ public class AutoBouncePath2 extends CommandBase {
   public AutoBouncePath2(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
-    String trajectoryJSON = "paths/output/bounce.wpilib.json";
+    String trajectoryJSON = "paths/output/bounce2.wpilib.json";
 
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
+    // config.setReversed(true);
 
     // m_trajectory = path.getTrajectory(config);
 
@@ -57,8 +58,6 @@ public class AutoBouncePath2 extends CommandBase {
       DriverStation.reportError("Unable to open trajectory: " + trajectoryJSON, ex.getStackTrace());
       System.out.println("Unable to open trajectory");
     }
-
-    m_drive.resetOdometry(m_trajectory.getInitialPose());
 
     m_follower = new RamseteController(Constants.Autonomous.kB, Constants.Autonomous.kZeta);
 
@@ -118,7 +117,7 @@ public class AutoBouncePath2 extends CommandBase {
     double rightOutput = rightFeedforward
         + m_drive.getRightPIDController().calculate(speeds.rightMetersPerSecond, rightSpeedSetpoint);
 
-    m_drive.setOutputVolts(leftOutput, -rightOutput);
+    m_drive.setOutputVolts(-rightOutput, leftOutput);
     m_prevSpeeds = targetWheelSpeeds;
     m_prevTime = curTime;
   }

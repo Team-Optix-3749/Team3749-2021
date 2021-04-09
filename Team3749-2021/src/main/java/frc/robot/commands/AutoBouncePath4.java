@@ -43,7 +43,7 @@ public class AutoBouncePath4 extends CommandBase {
   public AutoBouncePath4(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
-    String trajectoryJSON = "paths/output/bounce.wpilib.json";
+    String trajectoryJSON = "paths/output/bounce4.wpilib.json";
 
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
@@ -118,7 +118,7 @@ public class AutoBouncePath4 extends CommandBase {
     double rightOutput = rightFeedforward
         + m_drive.getRightPIDController().calculate(speeds.rightMetersPerSecond, rightSpeedSetpoint);
 
-    m_drive.setOutputVolts(leftOutput, -rightOutput);
+    m_drive.setOutputVolts(-rightOutput, leftOutput);
     m_prevSpeeds = targetWheelSpeeds;
     m_prevTime = curTime;
   }
