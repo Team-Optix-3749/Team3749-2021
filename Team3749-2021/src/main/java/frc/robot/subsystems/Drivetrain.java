@@ -35,6 +35,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpiutil.math.numbers.N2;
 import frc.robot.Constants;
 
+/**
+ * Drivetrain
+ * @author Raadwan
+ */
 @SuppressWarnings("PMD.TooManyFields")
 public class Drivetrain extends SubsystemBase {
   private WPI_VictorSPX m_leftFrontMotor = new WPI_VictorSPX(Constants.CAN.drive_lf);

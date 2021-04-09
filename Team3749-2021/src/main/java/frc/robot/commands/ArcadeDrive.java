@@ -6,6 +6,11 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+/**
+ * An autonomous command to arcade drive
+ * 
+ * @author Raadwan
+ */
 public class ArcadeDrive extends CommandBase {
   private final Drivetrain m_drive;
   private final DoubleSupplier m_forward;

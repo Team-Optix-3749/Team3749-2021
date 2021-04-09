@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj.Filesystem;
 /**
  * An autonomous command to follow a path
  * 
- * @author Rohan
  * @author Raadwan
  */
 public class AutoSlalomPath1 extends CommandBase {
