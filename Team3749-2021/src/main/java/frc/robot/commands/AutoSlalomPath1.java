@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj.Filesystem;
  * @author Rohan
  * @author Raadwan
  */
-public class AutoSlalomPath extends CommandBase {
+public class AutoSlalomPath1 extends CommandBase {
   private final Timer m_timer = new Timer();
   private final Drivetrain m_drive;
   private Trajectory m_trajectory;
@@ -40,10 +40,10 @@ public class AutoSlalomPath extends CommandBase {
    * @param drivetrain The drivetrain subsystem
    * @param path       The path to follow
    */
-  public AutoSlalomPath(Drivetrain drivetrain) {
+  public AutoSlalomPath1(Drivetrain drivetrain) {
     m_drive = drivetrain;
 
-    String trajectoryJSON = "paths/output/slalom.wpilib.json";
+    String trajectoryJSON = "paths/output/slalom1.wpilib.json";
 
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
@@ -82,6 +82,7 @@ public class AutoSlalomPath extends CommandBase {
     m_drive.getRightPIDController().reset();
     m_drive.m_leftEncoder.reset();
     m_drive.m_rightEncoder.reset();
+    m_drive.m_gyro.reset();
   }
 
   /**
@@ -89,6 +90,8 @@ public class AutoSlalomPath extends CommandBase {
    */
   @Override
   public void execute() {
+    System.out.println(m_drive.m_gyro.getAngle());
+
     double curTime = m_timer.get();
     double dt = curTime - m_prevTime;
 
