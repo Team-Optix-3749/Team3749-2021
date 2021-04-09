@@ -86,7 +86,7 @@ public class AutoSearchPathB extends CommandBase {
     m_drive.m_leftEncoder.reset();
     m_drive.m_rightEncoder.reset();
     m_drive.m_gyro.reset();
-    m_intake.liftDown();
+    m_intake.liftDownTimer();
   }
 
   /**
@@ -95,6 +95,7 @@ public class AutoSearchPathB extends CommandBase {
   @Override
   public void execute() {
     System.out.println(m_drive.m_gyro.getAngle());
+    m_intake.liftStop();
     m_intake.intakeIn();
 
     double curTime = m_timer.get();
