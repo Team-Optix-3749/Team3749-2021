@@ -36,18 +36,21 @@ public final class Constants {
     public static final double kTrackWidth = 0.711;
     public static final double kWheelRadius = 0.0762;
     public static final int kEncoderResolution = -2048;
-    public static final double kVisionP = -0.04;
+    public static final double kVisionP = 0.2;
     public static final double kVisionLimit = 0.5;
-    public static final double kTurnP = 0.5;
+    public static final double kTurnP = 0.4;
   }
 
   public static class Shooter {
-    public static final double kP = 1.0;
-    public static final double kI = 1.0;
-    public static final double kD = 1.0;
+    public static final double kP = 0.6;
+    public static final double kI = 0;
+    public static final double kD = 0;
     public static final int maxRPM = 5500;
     public static final int maxVoltage = 10;
     public static final double kBeltSpeed = 1.0;
+    public static final double kVisionP = 1.0;
+    public static final double kShooterAdjust = 450;
+    // public static final double kVisionLimit = 0.5;
   }
 
   public static class Intake {
