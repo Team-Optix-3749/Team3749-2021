@@ -1,8 +1,9 @@
 package frc.robot.subsystems;
 
-// import edu.wpi.first.networktables.NetworkTable;
-// import edu.wpi.first.networktables.NetworkTableEntry;
-// import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -28,12 +29,14 @@ public class Shooter extends SubsystemBase {
   private CANEncoder m_encoder;
   private CANPIDController m_controller;
 
+  private PIDController m_pidController;
+
   private WPI_TalonSRX m_belt_f = new WPI_TalonSRX(Constants.CAN.shooter_belt_front);
   private VictorSPX m_belt_b = new VictorSPX(Constants.CAN.shooter_belt_back);
 
-  // private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
+  private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
   // private NetworkTableEntry tx = m_table.getEntry("tx");
-  // private NetworkTableEntry ty = m_table.getEntry("ty");
+  public NetworkTableEntry ty = m_table.getEntry("ty");
   // private NetworkTableEntry ta = m_table.getEntry("ta");
 
   /**
@@ -46,12 +49,18 @@ public class Shooter extends SubsystemBase {
     m_encoder = m_shooterMotor.getEncoder();
     m_controller = m_shooterMotor.getPIDController();
     m_controller.setFeedbackDevice(m_encoder);
-    // m_controller.setP(Constants.Shooter.kP);
-    // m_controller.setI(Constants.Shooter.kI);
-    // m_controller.setD(Constants.Shooter.kD);
+    m_controller.setP(Constants.Shooter.kP);
+    m_controller.setI(Constants.Shooter.kI);
+    m_controller.setD(Constants.Shooter.kD);
     stop();
 
+    m_pidController = new PIDController(Constants.Shooter.kP, Constants.Shooter.kI, Constants.Shooter.kD);
+
     m_belt_b.setInverted(true);
+  }
+
+  public double getEncoderValue() {
+    return m_encoder.getVelocity();
   }
 
   /**
@@ -60,7 +69,11 @@ public class Shooter extends SubsystemBase {
    * @param velocity The desired velocity of the shooter
    */
   public void set(double velocity) {
-    m_controller.setReference(-velocity, ControlType.kVelocity);
+    // m_controller.setReference(velocity, ControlType.kVelocity);
+    // m_shooterMotor.getPIDController().setReference(velocity, ControlType.kVelocity);
+    // m_shooterMotor.set(Constants.Shooter.kP * (velocity-m_encoder.getVelocity()));
+    m_shooterMotor.set(m_pidController.calculate(m_encoder.getVelocity(), velocity) * 0.001);
+    System.out.println(m_pidController.calculate(m_encoder.getVelocity(), velocity) * 0.001);
   }
 
   /**
@@ -68,19 +81,22 @@ public class Shooter extends SubsystemBase {
    */
   public void stop() {
     m_controller.setReference(0, ControlType.kDutyCycle);
+    m_shooterMotor.stopMotor();
   }
 
-  public void visionAdjust() {
+  public void visionShoot() {
     // double x = tx.getDouble(0.0);
-    // double y = ty.getDouble(0.0);
+    double y = ty.getDouble(0.0);
     // double area = ta.getDouble(0.0);
     // double output = 0;
 
-    // output = x * Constants.Drivetrain.kVisionP;
+    double vel = y * Constants.Shooter.kVisionP;
 
-    // output *= Constants.Drivetrain.kVisionLimit;
+    // output *= Constants.Shooter.kVisionLimit;
+
+    // set(3000);
+    set(vel * Constants.Shooter.kShooterAdjust);
   }
-
 
   /**
    * Run belt up
