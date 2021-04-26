@@ -62,7 +62,7 @@ public class Drivetrain extends SubsystemBase {
   // private final AnalogGyro m_gyro = new AnalogGyro(0);
 
   private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
-  private NetworkTableEntry tx = m_table.getEntry("tx");
+  public NetworkTableEntry tx = m_table.getEntry("tx");
   // private NetworkTableEntry ty = m_table.getEntry("ty");
   // private NetworkTableEntry ta = m_table.getEntry("ta");
 
@@ -337,7 +337,7 @@ public class Drivetrain extends SubsystemBase {
 
     output *= Constants.Drivetrain.kVisionLimit;
 
-    tankDrive(-output, output);
+    tankDrive(output, -output);
   }
 
   /**
