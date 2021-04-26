@@ -10,9 +10,9 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
 public class RobotContainer {
-  private final Drivetrain m_drive = new Drivetrain();
+  public final Drivetrain m_drive = new Drivetrain();
   private final Intake m_intake = new Intake();
-  private final Shooter m_shooter = new Shooter();
+  public final Shooter m_shooter = new Shooter();
   // private final AutoBarrelRacingPath m_autoCommand = new AutoBarrelRacingPath(m_drive);
   // private final AutoBouncePath m_autoCommand = new AutoBouncePath(m_drive);
   // private final AutoSearchPathA m_autoCommand = new AutoSearchPathA(m_drive, m_intake);
@@ -22,9 +22,10 @@ public class RobotContainer {
   // private final AutoBouncePath3 m_autoBouncePath3 = new AutoBouncePath3(m_drive);
   // private final AutoBouncePath4 m_autoBouncePath4 = new AutoBouncePath4(m_drive);
   // private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoBouncePath1, m_autoBouncePath2, m_autoBouncePath3, m_autoBouncePath4);
-  private final AutoSlalomPath1 m_autoSlalomPath1 = new AutoSlalomPath1(m_drive);
-  private final AutoSlalomPath2 m_autoSlalomPath2 = new AutoSlalomPath2(m_drive);
-  private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoSlalomPath1, m_autoSlalomPath2);
+  // private final AutoSlalomPath1 m_autoSlalomPath1 = new AutoSlalomPath1(m_drive);
+  // private final AutoSlalomPath2 m_autoSlalomPath2 = new AutoSlalomPath2(m_drive);
+  // private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoSlalomPath1, m_autoSlalomPath2);
+  private final VisionAlign m_autoCommand = new VisionAlign(m_drive, m_shooter);
 
   public XboxController m_xboxController = new XboxController(0);
 
