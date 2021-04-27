@@ -15,8 +15,10 @@ public final class Constants {
     public static final int intake_motor_lift = 22;
   }
 
-  // Whether a subsystem is installed and in use
-  // 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
+  /**
+   * Whether a subsystem is installed and in use
+   * 0 = disabled, 1 = enabled, 2 = enabled and debugging (print sensor vals, etc)
+   */
   public static class Safety {
     public static final int drive = 1;
     public static final int shooter = 1;
@@ -27,10 +29,8 @@ public final class Constants {
   }
 
   public static class Drivetrain {
-    // public static final double kDriveSpeed = 0.8; // GD Lightspeed Circuit Path
-    // public static final double kTurnSpeed = 0.7; // GD Lightspeed Circuit Path
-    public static final double kDriveSpeed = 1.0;
-    public static final double kTurnSpeed = 0.9;
+    public static final double kDriveSpeed = 1.0; //0.8 for GD
+    public static final double kTurnSpeed = 0.9; //0.7 for GD
     public static final double kMaxSpeed = 0.8;
     public static final double kMaxAngularSpeed = Math.PI;
     public static final double kTrackWidth = 0.711;
@@ -50,7 +50,6 @@ public final class Constants {
     public static final double kBeltSpeed = 1.0;
     public static final double kVisionP = 1.0;
     public static final double kShooterAdjust = 450;
-    // public static final double kVisionLimit = 0.5;
   }
 
   public static class Intake {
@@ -62,6 +61,21 @@ public final class Constants {
   public static class Autonomous {
     public static final double kB = 2.0;
     public static final double kZeta = 0.7;
-    public static final Path AutoPath = Paths.test;
+    public static final Path AutoPath = Paths.Test;
+  }
+
+  private static class Paths {
+    public static final Barrel = "barrel";
+    public static final Bounce = "bounce";
+    public static final Bounce1 = "bounce1";
+    public static final Bounce2 = "bounce2";
+    public static final Bounce3 = "bounce3";
+    public static final Bounce4 = "bounce4";
+    public static final SearchA = "searcha";
+    public static final SearchB = "searchb";
+    public static final Slalom = "slalom";
+    public static final Slalom1 = "slalom1";
+    public static final Slalom2 = "slalom2";
+    public static final Test = "test";
   }
 }
