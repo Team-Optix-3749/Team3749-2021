@@ -9,23 +9,19 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
+/** 
+ * Controller bindings
+ * 
+ * @author Aadit Gupta
+ * @author Raadwan Masum
+ * @author Rohan Juneja
+ */
 public class RobotContainer {
   public final Drivetrain m_drive = new Drivetrain();
   private final Intake m_intake = new Intake();
   public final Shooter m_shooter = new Shooter();
-  // private final AutoBarrelRacingPath m_autoCommand = new AutoBarrelRacingPath(m_drive);
-  // private final AutoBouncePath m_autoCommand = new AutoBouncePath(m_drive);
-  // private final AutoSearchPathA m_autoCommand = new AutoSearchPathA(m_drive, m_intake);
-  // private final AutoSearchPathB m_autoCommand = new AutoSearchPathB(m_drive, m_intake);
-  // private final AutoBouncePath1 m_autoBouncePath1 = new AutoBouncePath1(m_drive);
-  // private final AutoBouncePath2 m_autoBouncePath2 = new AutoBouncePath2(m_drive);
-  // private final AutoBouncePath3 m_autoBouncePath3 = new AutoBouncePath3(m_drive);
-  // private final AutoBouncePath4 m_autoBouncePath4 = new AutoBouncePath4(m_drive);
-  // private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoBouncePath1, m_autoBouncePath2, m_autoBouncePath3, m_autoBouncePath4);
-  // private final AutoSlalomPath1 m_autoSlalomPath1 = new AutoSlalomPath1(m_drive);
-  // private final AutoSlalomPath2 m_autoSlalomPath2 = new AutoSlalomPath2(m_drive);
-  // private final SequentialCommandGroup m_autoCommand = new SequentialCommandGroup(m_autoSlalomPath1, m_autoSlalomPath2);
-  private final VisionAlign m_autoCommand = new VisionAlign(m_drive, m_shooter);
+  //private final Command m_autoCommand = new AutoPath(m_drive, Constants.Autonomous.AutoPath);
+  private final Command m_autoCommand = new VisionAlign(m_drive, m_shooter);
 
   public XboxController m_xboxController = new XboxController(0);
 
