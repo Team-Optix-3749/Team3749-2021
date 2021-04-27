@@ -35,9 +35,7 @@ public class Shooter extends SubsystemBase {
   private VictorSPX m_belt_b = new VictorSPX(Constants.CAN.shooter_belt_back);
 
   private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
-  // private NetworkTableEntry tx = m_table.getEntry("tx");
   public NetworkTableEntry ty = m_table.getEntry("ty");
-  // private NetworkTableEntry ta = m_table.getEntry("ta");
 
   /**
    * Constructor for Shooter
