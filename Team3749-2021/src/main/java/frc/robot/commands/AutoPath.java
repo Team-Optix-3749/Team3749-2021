@@ -23,7 +23,9 @@ import edu.wpi.first.wpilibj.Filesystem;
 /**
  * An autonomous command to follow a path
  * 
- * @author Raadwan
+ * @author Aadit Gupta
+ * @author Raadwan Masum
+ * @author Rohan Juneja
  */
 public class AutoPath extends CommandBase {
   private final Timer m_timer = new Timer();
@@ -39,10 +41,10 @@ public class AutoPath extends CommandBase {
    * @param drivetrain The drivetrain subsystem
    * @param path       The path to follow
    */
-  public AutoPath(Drivetrain drivetrain, String json) {
+  public AutoPath(Drivetrain drivetrain, String pathJson) {
     m_drive = drivetrain;
 
-    String trajectoryJSON = "paths/output/" + json + ".wpilib.json";
+    String trajectoryJSON = "paths/output/" + pathJson + ".wpilib.json";
 
     TrajectoryConfig config = new TrajectoryConfig(Units.feetToMeters(10.0), Units.feetToMeters(10.0));
     config.setKinematics(m_drive.getKinematics());
