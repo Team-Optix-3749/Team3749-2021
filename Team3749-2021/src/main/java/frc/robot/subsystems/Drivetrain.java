@@ -37,7 +37,10 @@ import frc.robot.Constants;
 
 /**
  * Drivetrain
- * @author Raadwan
+ * 
+ * @author Aadit Gupta
+ * @author Raadwan Masum
+ * @author Rohan Juneja
  */
 @SuppressWarnings("PMD.TooManyFields")
 public class Drivetrain extends SubsystemBase {
@@ -142,22 +145,6 @@ public class Drivetrain extends SubsystemBase {
     while (m_leftEncoder.getDistance() + m_rightEncoder.getDistance() != distance)
       tankDrive(leftSpeed, rightSpeed);
   }
-
-  // /**
-  // * Drive robot with timer
-  // *
-  // * @param leftSpeed left side drive speed
-  // * @param rightSpeed right side drive speed
-  // * @param time time in seconds
-  // */
-  // public void auto(double leftSpeed, double rightSpeed, double time) {
-  // m_drive.setSafetyEnabled(false);
-  // m_timer.reset();
-  // m_timer.start();
-
-  // while (m_timer.get() < time)
-  // tankDrive(leftSpeed, rightSpeed);
-  // }
 
   /**
    * Drive robot with timer
@@ -327,8 +314,7 @@ public class Drivetrain extends SubsystemBase {
 
   public void visionAlign() {
     double x = tx.getDouble(0.0);
-    // double y = ty.getDouble(0.0);
-    // double area = ta.getDouble(0.0);
+
     double output = 0;
 
     output = x * Constants.Drivetrain.kVisionP;
