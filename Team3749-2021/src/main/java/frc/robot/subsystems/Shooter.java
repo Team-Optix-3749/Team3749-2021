@@ -21,6 +21,7 @@ import com.revrobotics.ControlType;
  * Shooter Subsystem
  *
  * @author Aadit Gupta
+ * @author Raadwan Masum
  * @author Rohan Juneja
  */
 
@@ -67,9 +68,6 @@ public class Shooter extends SubsystemBase {
    * @param velocity The desired velocity of the shooter
    */
   public void set(double velocity) {
-    // m_controller.setReference(velocity, ControlType.kVelocity);
-    // m_shooterMotor.getPIDController().setReference(velocity, ControlType.kVelocity);
-    // m_shooterMotor.set(Constants.Shooter.kP * (velocity-m_encoder.getVelocity()));
     m_shooterMotor.set(m_pidController.calculate(m_encoder.getVelocity(), velocity) * 0.001);
     System.out.println(m_pidController.calculate(m_encoder.getVelocity(), velocity) * 0.001);
   }
@@ -82,17 +80,15 @@ public class Shooter extends SubsystemBase {
     m_shooterMotor.stopMotor();
   }
 
+  /**
+   * Getting ty value from Limelight and setting velocity to it
+   */
+
   public void visionShoot() {
-    // double x = tx.getDouble(0.0);
     double y = ty.getDouble(0.0);
-    // double area = ta.getDouble(0.0);
-    // double output = 0;
 
     double vel = y * Constants.Shooter.kVisionP;
 
-    // output *= Constants.Shooter.kVisionLimit;
-
-    // set(3000);
     set(vel * Constants.Shooter.kShooterAdjust);
   }
 
