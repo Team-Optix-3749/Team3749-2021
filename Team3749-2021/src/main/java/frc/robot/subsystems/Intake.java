@@ -7,6 +7,13 @@ import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+/**
+ * Intake Subsystem
+ *
+ * @author Aadit Gupta
+ * @author Raadwan Masum
+ * @author Rohan Juneja
+ */
 public class Intake extends SubsystemBase {
   public VictorSPX m_intake = new VictorSPX(Constants.CAN.intake_motor);
   public VictorSPX m_lift = new VictorSPX(Constants.CAN.intake_motor_lift);

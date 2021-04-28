@@ -3,15 +3,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
 
+/**
+ * Intake out powercells
+ * 
+ * @author Raadwan Masum
+ * @author Aadit Gupta
+ * @author Rohan Juneja
+ */
 public class IntakeOut extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake m_intake;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
   public IntakeOut(Intake subsystem) {
     m_intake = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.

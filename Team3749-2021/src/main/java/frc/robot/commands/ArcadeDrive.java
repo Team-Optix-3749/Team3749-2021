@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /**
  * An autonomous command to arcade drive
  * 
- * @author Raadwan
+ * @author Aadit Gupta
+ * @author Raadwan Masum
+ * @author Rohan Juneja
  */
 public class ArcadeDrive extends CommandBase {
   private final Drivetrain m_drive;

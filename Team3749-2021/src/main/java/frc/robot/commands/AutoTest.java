@@ -4,6 +4,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
 /**
+ * Used for testing autonomous commands
+ * 
+ * @author Aadit Gupta
+ * @author Raadwan Masum
+ * @author Rohan Juneja
  */
 public class AutoTest extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })

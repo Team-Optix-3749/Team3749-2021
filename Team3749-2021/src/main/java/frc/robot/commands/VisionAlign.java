@@ -10,7 +10,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 /**
  * An autonomous command to arcade drive
  * 
- * @author Raadwan
+ * @author Raadwan Masum
+ * @author Rohan Juneja
+ * @author Aadit Gupta
  */
 public class VisionAlign extends CommandBase {
   private final Drivetrain m_drive;

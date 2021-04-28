@@ -9,6 +9,7 @@ import frc.robot.Constants;
 /**
  * Command that Shoots at velocity provided by double supplier
  * 
+ * @author Raadwan Masum
  * @author Rohan Juneja
  * @author Aadit Gupta
  */
