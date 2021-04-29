@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
 // import frc.robot.paths.*;
@@ -8,6 +9,7 @@ import frc.robot.subsystems.Drivetrain;
 import java.io.IOException;
 // import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.controller.RamseteController;
@@ -20,6 +22,13 @@ import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 
+
+public class AutoPath extends SequentialCommandGroup {
+  public AutoPath(Drivetrain drivetrain, List<String> paths) {
+    addCommands(paths.stream().map(pathJson -> new AutoSinglePath(drivetrain, pathJson)).toArray(AutoSinglePath[]::new));
+  }
+}
+
 /**
  * An autonomous command to follow a path
  * 
@@ -27,7 +36,7 @@ import edu.wpi.first.wpilibj.Filesystem;
  * @author Raadwan Masum
  * @author Rohan Juneja
  */
-public class AutoPath extends CommandBase {
+class AutoSinglePath extends CommandBase {
   private final Timer m_timer = new Timer();
   private final Drivetrain m_drive;
   private Trajectory m_trajectory;
@@ -41,7 +50,7 @@ public class AutoPath extends CommandBase {
    * @param drivetrain The drivetrain subsystem
    * @param path       The path to follow
    */
-  public AutoPath(Drivetrain drivetrain, String pathJson) {
+  public AutoSinglePath(Drivetrain drivetrain, String pathJson) {
     m_drive = drivetrain;
 
     String trajectoryJSON = "paths/output/" + pathJson + ".wpilib.json";

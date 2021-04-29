@@ -1,6 +1,6 @@
 package frc.robot;
 
-import frc.robot.paths.*;
+import java.util.List;
 
 public final class Constants {
   public static class CAN {
@@ -58,24 +58,24 @@ public final class Constants {
     public static final double kIntakeLiftDownSpeed = -1.0;
   }
 
+  private static class Paths {
+    public static final String Barrel = "barrel";
+    public static final String Bounce = "bounce";
+    public static final String Bounce1 = "bounce1";
+    public static final String Bounce2 = "bounce2";
+    public static final String Bounce3 = "bounce3";
+    public static final String Bounce4 = "bounce4";
+    public static final String SearchA = "searcha";
+    public static final String SearchB = "searchb";
+    public static final String Slalom = "slalom";
+    public static final String Slalom1 = "slalom1";
+    public static final String Slalom2 = "slalom2";
+    public static final String Test = "test";
+  }
+
   public static class Autonomous {
     public static final double kB = 2.0;
     public static final double kZeta = 0.7;
-    public static final Path AutoPath = Paths.Test;
-  }
-
-  private static class Paths {
-    public static final Barrel = "barrel";
-    public static final Bounce = "bounce";
-    public static final Bounce1 = "bounce1";
-    public static final Bounce2 = "bounce2";
-    public static final Bounce3 = "bounce3";
-    public static final Bounce4 = "bounce4";
-    public static final SearchA = "searcha";
-    public static final SearchB = "searchb";
-    public static final Slalom = "slalom";
-    public static final Slalom1 = "slalom1";
-    public static final Slalom2 = "slalom2";
-    public static final Test = "test";
+    public static final List<String> AutoPaths = List.of(Paths.Test);
   }
 }
