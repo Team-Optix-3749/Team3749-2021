@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -20,8 +19,8 @@ public class RobotContainer {
   public final Drivetrain m_drive = new Drivetrain();
   private final Intake m_intake = new Intake();
   public final Shooter m_shooter = new Shooter();
-  //private final Command m_autoCommand = new AutoPath(m_drive, Constants.Autonomous.AutoPath);
-  private final Command m_autoCommand = new VisionAlign(m_drive, m_shooter);
+  private final Command m_autoCommand = new AutoPath(m_drive, Constants.Autonomous.AutoPaths);
+  // private final Command m_autoCommand = new VisionAlign(m_drive, m_shooter);
 
   public XboxController m_xboxController = new XboxController(0);
 
