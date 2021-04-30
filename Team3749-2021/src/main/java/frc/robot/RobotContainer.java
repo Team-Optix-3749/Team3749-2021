@@ -19,8 +19,8 @@ public class RobotContainer {
   public final Drivetrain m_drive = new Drivetrain();
   private final Intake m_intake = new Intake();
   public final Shooter m_shooter = new Shooter();
-  //private final Command m_autoCommand = new AutoPath(m_drive, Constants.Autonomous.AutoPaths);
-  private final Command m_autoCommand = new VisionAlign(m_drive, m_shooter);
+  private final Command m_autoCommand = new AutoPath(m_drive, Constants.Autonomous.AutoPaths);
+  // private final Command m_autoCommand = new VisionAlign(m_drive, m_shooter);
 
   public XboxController m_xboxController = new XboxController(0);
 
