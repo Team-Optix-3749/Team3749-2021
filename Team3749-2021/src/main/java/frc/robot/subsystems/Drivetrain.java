@@ -324,6 +324,10 @@ public class Drivetrain extends SubsystemBase {
     tankDrive(output, -output);
   }
 
+  public double getTX() {
+    return tx.getDouble(0.0);
+  }
+
   /**
    * Returns the angle of the robot as a Rotation2d.
    *
