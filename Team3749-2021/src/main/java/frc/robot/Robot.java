@@ -15,7 +15,7 @@ import frc.robot.commands.*;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private static RobotContainer m_robotContainer;
+  public static RobotContainer m_robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used
