@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
-/** 
+/**
  * Controller bindings
  * 
  * @author Aadit Gupta
@@ -19,10 +19,12 @@ public class RobotContainer {
   public final Drivetrain m_drive = new Drivetrain();
   private final Intake m_intake = new Intake();
   public final Shooter m_shooter = new Shooter();
-  private final Command m_autoCommand = new AutoPath(m_drive, Constants.Autonomous.AutoPaths);
-  // private final Command m_autoCommand = new VisionAlign(m_drive, m_shooter);
+  // private final Command m_autoCommand = new AutoPath(m_drive,
+  // Constants.Autonomous.AutoPaths);
+  private final Command m_autoCommand = new AutoVisionAlign(m_drive, m_shooter);
 
   public XboxController m_xboxController = new XboxController(0);
+  public JoystickButton m_aButton = new JoystickButton(m_xboxController, Button.kA.value);
 
   public RobotContainer() {
     configureButtonBindings();
@@ -48,7 +50,11 @@ public class RobotContainer {
     // ShootMax(m_shooter), true)
     // .whenReleased(new ShootStop(m_shooter), true);
 
-    new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new ShootMax(m_shooter), true);
+    // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
+    // ShootMax(m_shooter), true);
+    // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
+    // AutoVisionAlign(m_drive, m_shooter), true);
+    m_aButton.whenPressed(new VisionShoot(m_drive, m_shooter), true);
 
     new JoystickButton(m_xboxController, Button.kBumperLeft.value).whenPressed(new ShooterBeltUp(m_shooter), true)
         .whenReleased(new ShooterBeltStop(m_shooter), true);
