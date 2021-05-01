@@ -1,8 +1,7 @@
 package frc.robot.commands;
 
+import frc.robot.Robot;
 import frc.robot.subsystems.*;
-
-import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -14,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * @author Rohan Juneja
  * @author Aadit Gupta
  */
-public class VisionAlign extends CommandBase {
+public class VisionShoot extends CommandBase {
   private final Drivetrain m_drive;
   private final Shooter m_shooter;
   private final Timer m_timer = new Timer();
@@ -23,7 +22,7 @@ public class VisionAlign extends CommandBase {
    * 
    * @param drive
    */
-  public VisionAlign(Drivetrain drive, Shooter shooter) {
+  public VisionShoot(Drivetrain drive, Shooter shooter) {
     m_drive = drive;
     m_shooter = shooter;
     addRequirements(m_drive, m_shooter);
@@ -33,22 +32,24 @@ public class VisionAlign extends CommandBase {
   public void initialize() {
     m_timer.reset();
     m_timer.start();
-
-    while (m_timer.get() < 6.0) {
-      if (m_timer.get() < 3.0) {
-        System.out.println("timer: " + m_timer.get());
-        m_drive.visionAlign();
-        m_shooter.visionShoot();
-      } else if (m_timer.get() > 3.0 && m_timer.get() < 5.0) {
-        m_shooter.visionShoot();
-        m_shooter.beltUp();
-      }
-    }
   }
 
   @Override
   public void execute() {
+    m_drive.visionAlign();
 
+    var shooting = m_shooter.visionShoot();
+
+    System.out.println("shooting: " + shooting);
+
+    if (shooting) {
+      m_shooter.beltUp();
+    }
+  }
+
+  @Override
+  public boolean isFinished() {
+    return !(m_timer.get() < 6.0 && Robot.m_robotContainer.m_aButton.get());
   }
 
   @Override
