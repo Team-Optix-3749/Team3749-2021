@@ -36,7 +36,7 @@ public class Shooter extends SubsystemBase {
   private VictorSPX m_belt_b = new VictorSPX(Constants.CAN.shooter_belt_back);
 
   private NetworkTable m_table = NetworkTableInstance.getDefault().getTable("limelight");
-  public NetworkTableEntry ty = m_table.getEntry("ty");
+  public NetworkTableEntry ta = m_table.getEntry("ta");
 
   /**
    * Constructor for Shooter
@@ -67,9 +67,9 @@ public class Shooter extends SubsystemBase {
    * 
    * @param velocity The desired velocity of the shooter
    */
-  public void set(double velocity) {
-    m_shooterMotor.set(m_pidController.calculate(m_encoder.getVelocity(), velocity) * 0.001);
-    System.out.println(m_pidController.calculate(m_encoder.getVelocity(), velocity) * 0.001);
+  public void set(double current, double target) {
+    m_shooterMotor.set(m_pidController.calculate(current, target) * 0.001);
+    System.out.println(m_pidController.calculate(current, target) * 0.001);
   }
 
   /**
@@ -84,12 +84,25 @@ public class Shooter extends SubsystemBase {
    * Getting ty value from Limelight and setting velocity to it
    */
 
-  public void visionShoot() {
-    double y = ty.getDouble(0.0);
+  public boolean visionShoot() {
+    double some_number = 3.5;
+    double y = some_number - ta.getDouble(0.0);
 
-    double vel = y * Constants.Shooter.kVisionP;
+    double current = m_encoder.getVelocity();
+    double target = y * Constants.Shooter.kVisionP * Constants.Shooter.kShooterAdjust;
 
-    set(vel * Constants.Shooter.kShooterAdjust);
+    set(current, target);
+
+    // double difference = Math.abs(m_encoder.getVelocity() - vel *
+    // Constants.Shooter.kShooterAdjust);
+    double difference = Math.abs(current - target);
+
+    System.out.println("TY: " + y);
+    System.out.println("Vel Diff: " + difference);
+    System.out.println("Shooter Speed: " + current);
+    System.out.println("Target Speed: " + target);
+
+    return difference < 40;
   }
 
   /**
@@ -120,7 +133,8 @@ public class Shooter extends SubsystemBase {
    * Send Powercells to Orbit
    */
   public void sendToOrbit() {
-    // m_controller.setReference(Constants.Shooter.maxVoltage, ControlType.kVoltage);
+    // m_controller.setReference(Constants.Shooter.maxVoltage,
+    // ControlType.kVoltage);
     m_controller.setReference(10, ControlType.kVoltage);
   }
 }
