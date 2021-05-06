@@ -22,13 +22,6 @@ import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
 
-
-public class AutoPath extends SequentialCommandGroup {
-  public AutoPath(Drivetrain drivetrain, List<String> paths) {
-    addCommands(paths.stream().map(pathJson -> new AutoSinglePath(drivetrain, pathJson)).toArray(AutoSinglePath[]::new));
-  }
-}
-
 /**
  * An autonomous command to follow a path
  * 
@@ -151,5 +144,12 @@ class AutoSinglePath extends CommandBase {
   @Override
   public boolean isFinished() {
     return m_timer.hasElapsed(m_trajectory.getTotalTimeSeconds());
+  }
+}
+
+public class AutoPath extends SequentialCommandGroup {
+  public AutoPath(Drivetrain drivetrain, List<String> paths) {
+    addCommands(
+        paths.stream().map(pathJson -> new AutoSinglePath(drivetrain, pathJson)).toArray(AutoSinglePath[]::new));
   }
 }
