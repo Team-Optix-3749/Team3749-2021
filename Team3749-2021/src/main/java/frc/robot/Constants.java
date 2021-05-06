@@ -50,6 +50,7 @@ public final class Constants {
     public static final double kBeltSpeed = 0.8;
     public static final double kVisionP = 1.0;
     public static final double kShooterAdjust = 1600;
+    public static final double kDistanceAdjust = 2.5;
   }
 
   public static class Intake {
@@ -58,7 +59,7 @@ public final class Constants {
     public static final double kIntakeLiftDownSpeed = -1.0;
   }
 
-  private static class Paths {
+  public static class Paths {
     public static final String Barrel = "barrel";
     public static final String Bounce = "bounce";
     public static final String Bounce1 = "bounce1";
@@ -71,6 +72,8 @@ public final class Constants {
     public static final String Slalom1 = "slalom1";
     public static final String Slalom2 = "slalom2";
     public static final String Test = "test";
+    public static final String Auto2020_1 = "Auto2020-1";
+    public static final String Auto2020_2 = "Auto2020-2";
   }
 
   public static class Autonomous {
