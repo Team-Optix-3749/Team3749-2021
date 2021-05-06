@@ -68,8 +68,8 @@ public class Shooter extends SubsystemBase {
    * @param velocity The desired velocity of the shooter
    */
   public void set(double current, double target) {
-    m_shooterMotor.set(m_pidController.calculate(current, target) * 0.001);
-    System.out.println(m_pidController.calculate(current, target) * 0.001);
+    m_shooterMotor.set(m_pidController.calculate(current, target) * 0.004);
+    System.out.println(m_pidController.calculate(current, target) * 0.004);
   }
 
   /**
@@ -85,8 +85,7 @@ public class Shooter extends SubsystemBase {
    */
 
   public boolean visionShoot() {
-    double some_number = 3.5;
-    double y = some_number - ta.getDouble(0.0);
+    double y = Constants.Shooter.kDistanceAdjust - ta.getDouble(0.0);
 
     double current = m_encoder.getVelocity();
     double target = y * Constants.Shooter.kVisionP * Constants.Shooter.kShooterAdjust;
