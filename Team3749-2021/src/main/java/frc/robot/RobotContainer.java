@@ -21,7 +21,7 @@ public class RobotContainer {
   public final Shooter m_shooter = new Shooter();
   // private final Command m_autoCommand = new AutoPath(m_drive,
   // Constants.Autonomous.AutoPaths);
-  private final Command m_autoCommand = new AutoVisionAlign(m_drive, m_shooter);
+  private final Command m_autoCommand = new Auto2020(m_drive, m_shooter);
 
   public XboxController m_xboxController = new XboxController(0);
   public JoystickButton m_aButton = new JoystickButton(m_xboxController, Button.kA.value);
