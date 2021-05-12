@@ -4,7 +4,6 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
-import frc.robot.Constants;
 
 /**
  * Command that Shoots at velocity provided by double supplier
