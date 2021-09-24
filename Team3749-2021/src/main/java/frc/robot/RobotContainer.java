@@ -44,17 +44,17 @@ public class RobotContainer {
     // m_xboxController.getTriggerAxis(Hand.kRight)), true);
 
     // shooter controller bindings
-    // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
-    // ShootMax(m_shooter), true);
-    // new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new
-    // ShootMax(m_shooter), true)
-    // .whenReleased(new ShootStop(m_shooter), true);
+    new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
+    ShootMax(m_shooter), true);
+    new JoystickButton(m_xboxController, Button.kA.value).whenPressed(new
+    ShootMax(m_shooter), true)
+    .whenReleased(new ShootStop(m_shooter), true);
 
     // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
     // ShootMax(m_shooter), true);
     // new JoystickButton(m_xboxController, Button.kA.value).toggleWhenPressed(new
     // AutoVisionAlign(m_drive, m_shooter), true);
-    m_aButton.whenPressed(new VisionShoot(m_drive, m_shooter), true);
+    // m_aButton.whenPressed(new VisionShoot(m_drive, m_shooter), true);
 
     new JoystickButton(m_xboxController, Button.kBumperLeft.value).whenPressed(new ShooterBeltUp(m_shooter), true)
         .whenReleased(new ShooterBeltStop(m_shooter), true);
